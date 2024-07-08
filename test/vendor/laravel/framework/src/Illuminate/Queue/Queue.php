@@ -54,10 +54,10 @@ abstract class Queue
      * @param  mixed  $data
      * @return mixed
      */
-    public function pushOn($queue, $job, $data = '')
-    {
-        return $this->push($job, $data, $queue);
-    }
+    // public function pushOn($queue, $job, $data = '')
+    // {
+    //     return $this->push($job, $data, $queue);
+    // }
 
     /**
      * Push a new job onto a specific queue after (n) seconds.
@@ -68,10 +68,10 @@ abstract class Queue
      * @param  mixed  $data
      * @return mixed
      */
-    public function laterOn($queue, $delay, $job, $data = '')
-    {
-        return $this->later($delay, $job, $data, $queue);
-    }
+    // public function laterOn($queue, $delay, $job, $data = '')
+    // {
+    //     return $this->later($delay, $job, $data, $queue);
+    // }
 
     /**
      * Push an array of jobs onto the queue.
@@ -81,12 +81,12 @@ abstract class Queue
      * @param  string|null  $queue
      * @return void
      */
-    public function bulk($jobs, $data = '', $queue = null)
-    {
-        foreach ((array) $jobs as $job) {
-            $this->push($job, $data, $queue);
-        }
-    }
+    // public function bulk($jobs, $data = '', $queue = null)
+    // {
+    //     foreach (*array) $jobs as $job) {
+    //         $this->push($job, $data, $queue);
+    //     }
+    // }
 
     /**
      * Create a payload string from the given job and data.

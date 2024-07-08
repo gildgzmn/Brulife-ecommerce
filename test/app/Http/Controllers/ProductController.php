@@ -9,6 +9,7 @@ class ProductController extends Controller
 {
     public function show($id)
     {
+        //Retrieves a product by its id from the database
         $product  = Products::findOrFail($id);
         return response()->json(['products' => $product ]);
 

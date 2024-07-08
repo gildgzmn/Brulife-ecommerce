@@ -15,11 +15,11 @@ class CartController extends Controller
         // Retrieve the authenticated user's cart items
         $userId = Auth::id();
         $cartItems = CartItem::where('user_id', $userId)->get();
-        $user = User::find($userId);
+        //$user = User::find($userId);
 
         return response()->json([
             'cartItems' => $cartItems,
-            'user' => $user,
+            //'user' => $user,
         ]);
     }
 

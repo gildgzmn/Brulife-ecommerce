@@ -15,12 +15,15 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-Route::get('/products/{id}', [ProductController::class, 'index']);
+
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::get('/dashboard', function () {
     $products = Products::all();
-    return Inertia::render('Dashboard',[
+    return response()->json([
         'products' => $products
+    // return Inertia::render('Dashboard',[
+    //     'products' => $products
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

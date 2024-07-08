@@ -7,10 +7,10 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    public function index($id)
+    public function show($id)
     {
         $product  = Products::findOrFail($id);
-        return Inertia::render('Products', ['product' => $product ]);
+        return response()->json(['products' => $product ]);
 
 
     }

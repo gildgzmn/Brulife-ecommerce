@@ -16,18 +16,16 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): \Illuminate\Http\JsonResponse
     {
-        return Inertia::render('Profile/Edit', [
+        return response()->json([
+            'profileUser' => $request->user(),
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request): \Illuminate\Http\JsonResponse
     {
         $request->user()->fill($request->validated());
 
@@ -37,13 +35,12 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return response()->json([
+            'message' => 'Profile updated successfully',
+        ]);
     }
 
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request): \Illuminate\Http\JsonResponse
     {
         $request->validate([
             'password' => ['required', 'current_password'],
@@ -58,6 +55,8 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return response()->json([
+            'message' => 'Account deleted successfully',
+        ]);
     }
 }

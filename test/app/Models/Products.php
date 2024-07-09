@@ -32,4 +32,15 @@ class Products extends Model
     {
         return $this->belongsTo(Discount::class);
     }
+
+    //stocks checker for cart
+ public function decreaseStock($quantity)
+    {
+        if ($this->stock >= $quantity) {
+            $this->stock -= $quantity;
+            $this->save();
+            return true;
+        }
+        return false;
+    }
 }

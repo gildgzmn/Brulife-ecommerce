@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'db1528d60c5a1df74cadcee8cb260bcdbec33f0c',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -424,6 +424,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'laravel/folio' => array(
+            'pretty_version' => 'v1.1.8',
+            'version' => '1.1.8.0',
+            'reference' => '3b6e8de60ca7487364d1cd35378069c111963f78',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/folio',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v11.14.0',
             'version' => '11.14.0.0',
@@ -434,9 +443,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'db1528d60c5a1df74cadcee8cb260bcdbec33f0c',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

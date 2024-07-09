@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    // return Inertia::render('Welcome', [
+    return response()->json([
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -18,13 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products', [ProductController::class, 'index']);
 
 Route::get('/dashboard', function () {
     $products = Products::all();
     return response()->json([
         'products' => $products
-    // return Inertia::render('Dashboard',[
-    //     'products' => $products
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -39,4 +39,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CartItem;
+use App\Models\Orders;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,4 +83,43 @@ class CartController extends Controller
 
         return response()->json(['message' => 'Product removed from cart successfully']);
     }
+
+    public function placeOrder(Request $request): JsonResponse
+    {
+        $userId = Auth::id();
+        $cartItems = CartItem::where('user_id', $userId)->get();
+
+        if ($cartItems->isEmpty()) {
+            return response()->json(['message' => 'No items in cart'], 400);
+        }
+
+        foreach ($cartItems as $item) {
+            $product = Products::find($item->product_id);
+
+            if ($product->stock < $item->quantity) {
+                return response()->json(['message' => 'Out of Stock! :('], 400);
+            }
+
+            $totalPrice = $product->price * $item->quantity;
+
+            Orders::create([
+                'user_id' => $userId,
+                'product_id' => $item->product_id,
+                'payment_id' => $request->payment_id,
+                'quantity' => $item->quantity,
+                'price' => $product->price,
+                'total_price' => $totalPrice,
+                'status' => 'Pending',
+            ]);
+
+            $product->stock -= $item->quantity;
+            $product->save();
+
+            // Remove item from cart after ordering
+            $item->delete();
+        }
+
+        return response()->json(['message' => 'Order placed successfully']);
+    }
 }
+

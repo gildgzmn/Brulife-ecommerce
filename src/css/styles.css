@@ -1,0 +1,38 @@
+.category-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .category-button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+  }
+  
+  .hover-black-transparent {
+    position: relative;
+    z-index: 0;
+  }
+  
+  .hover-black-transparent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2); /* Black transparent background */
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .hover-black-transparent:hover::before {
+    opacity: 1;
+  }
+  

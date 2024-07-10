@@ -7,6 +7,7 @@ use App\Models\Products;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -37,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
     Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    // Route::post('/cart/place-order', [CartController::class, 'placeOrder']);
 });
 
 require __DIR__ . '/auth.php';

@@ -24,22 +24,22 @@ function Shoes() {
       <section style={styles.section}>
         <h2>Best Sellers</h2>
         <div style={styles.bestSellersGrid}>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          <Product imageSrc="./src/assets/ShoesProd1.jpg" />
+          <Product imageSrc="./src/assets/ShoesProd2.jpg" />
+          <Product imageSrc="./src/assets/ShoesProd3.jpg" />
+          <Product imageSrc="./src/assets/ShoesProd4.jpg" />
         </div>
       </section>
       
       <section style={styles.section}>
         <h2>All Products</h2>
         <div style={styles.productGrid}>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          <Product imageSrc="./src/assets/Shoes1.png" />
+          <Product imageSrc="./src/assets/Shoes2.png" />
+          <Product imageSrc="./src/assets/Shoes3.png" />
+          <Product imageSrc="./src/assets/Shoes4.png" />
+          <Product imageSrc="./src/assets/Shoes5.png" />
+          <Product imageSrc="./src/assets/Shoes6.png" />
         </div>
       </section>
       
@@ -55,10 +55,10 @@ function Shoes() {
   );
 }
 
-function Product() {
+function Product({ imageSrc }) {
   return (
     <div style={styles.product}>
-      <img src="placeholder.jpg" alt="Product" style={styles.productImage} />
+      <img src={imageSrc} alt="Product" style={styles.productImage} />
     </div>
   );
 }
@@ -122,7 +122,7 @@ const styles = {
   product: {
     margin: '10px',
     width: '150px',
-    height: '250px', // Increase height for Best Sellers
+    height: '250px', // Increased height for Best Sellers
     backgroundColor: '#e0e0e0',
   },
   review: {

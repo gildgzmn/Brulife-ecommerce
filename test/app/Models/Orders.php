@@ -28,5 +28,9 @@ class Orders extends Model
     {
         return $this->belongsTo(Products::class);
     }
+
+    public function payments(){
+        return $this->belongsTo(Payment::class);
+    }
 }
 

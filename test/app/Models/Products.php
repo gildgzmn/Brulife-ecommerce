@@ -33,6 +33,7 @@ class Products extends Model
         return $this->belongsTo(Discount::class);
     }
 
+
 //     //stocks checker for cart
 //  public function decreaseStock($quantity)
 //     {

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Cart;
+use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,7 +10,7 @@ class CartService
 {
     public function addToCart(array $data)
     {
-        // Define validation rules
+        // Validate
         $validator = Validator::make($data, [
             'user_id' => ['required', 'exists:users,id'],
             'product_id' => ['required', 'exists:products,id'],
@@ -25,20 +25,28 @@ class CartService
             ];
         }
 
-        // Add to cart
-        $cart = Cart::updateOrCreate(
-            [
-                'user_id' => $data['user_id'],
-                'product_id' => $data['product_id']
-            ],
-            [
-                'quantity' => $data['quantity']
-            ]
-        );
+        //If item exists in cart, update quantity
+        $existingCartItem = CartItem::where('user_id', $data['user_id'])
+            ->where('product_id', $data['product_id'])
+            ->first();
 
-        return [
-            'success' => true,
-            'cart' => $cart
-        ];
+        if ($existingCartItem) {
+            //update quantity
+            $existingCartItem->quantity += $data['quantity'];
+            $existingCartItem->save();
+            return [
+                'success' => true,
+                'cart' => $existingCartItem
+            ];
+
+        } else {
+            // Create if the item does not exist in the cart
+            $cart = CartItem::create($data);
+
+            return [
+                'success' => true,
+                'cart' => $cart
+            ];
+        }
     }
 }

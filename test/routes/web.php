@@ -24,9 +24,10 @@ Route::get('/', function () {
 Route::get('/newlogin', [LoginController::class, 'login']);
 Route::get('/newregister', [RegisterController::class,'register']);
 
-
-Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+
+Route::get('/cart/add', [CartController::class, 'addToCart']);
 
 //unessessary ata
 Route::get('/dashboard', function () {
@@ -42,9 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
-    Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+    // Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+    // Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
     // Route::post('/cart/place-order', [CartController::class, 'placeOrder']);
 });
 

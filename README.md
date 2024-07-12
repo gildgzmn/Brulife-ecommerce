@@ -13,6 +13,9 @@ Ensure you have the following applications installed on your local machine befor
 
 - **Composer**: Dependency Manager for PHP
   - [Install Composer](https://getcomposer.org/)
+    
+- **For IDE you can use PHP Storm, VSCode or any**
+
 
 ## Installation and Setup
 

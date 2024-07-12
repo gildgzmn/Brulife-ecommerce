@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', function () {
@@ -27,7 +28,9 @@ Route::get('/newregister', [RegisterController::class,'register']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/cart/add', [CartController::class, 'addToCart']);
+Route::get('cart/order', [OrderController::class, 'store']);
 
 //unessessary ata
 Route::get('/dashboard', function () {
@@ -42,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
     // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
     // Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
     // Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');

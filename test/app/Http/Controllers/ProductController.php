@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,17 +8,46 @@ use Inertia\Inertia;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index(Request $request)
+    {
+        $categoryFilter = $request->query('category');
 
-        $products = Products::all();
-        return response()->json(['products' => $products ]);
+        $productsQuery = Products::with(['category', 'inventory']);
+
+        if ($categoryFilter) {
+            $productsQuery->whereHas('category', function($query) use ($categoryFilter) {
+                $query->where('name', $categoryFilter);
+            });
+        }
+
+        $products = $productsQuery->get()->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'image' => $product->img,
+                'name' => $product->name,
+                'description' => $product->desc,
+                'price' => $product->price,
+                'category' => $product->category->name,
+                'inventory' => $product->inventory->quantity,
+            ];
+        });
+
+        return response()->json(['products' => $products]);
     }
+
     public function show($id)
     {
-        //Retrieves a product by its id from the database
-        $product  = Products::findOrFail($id);
-        return response()->json(['products' => $product ]);
+        $product = Products::with(['category', 'inventory'])->findOrFail($id);
+        $productData = [
+            'id' => $product->id,
+            'image' => $product->img,
+            'name' => $product->name,
+            'description' => $product->desc,
+            'price' => $product->price,
+            'category' => $product->category->name,
+            'inventory' => $product->inventory->quantity,
+        ];
 
-
+        return response()->json(['product' => $productData]);
     }
 }

@@ -21,6 +21,12 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
+    public function index(){
+        $userId = Auth::user()->id;
+        $cartItems = CartItem::where("user_id", $userId)->get();
+        return response()->json(['cartItems' => $cartItems], 200);
+    }
+
     public function addToCart(Request $request)
     {
         $data = $request->only('user_id', 'product_id', 'quantity');

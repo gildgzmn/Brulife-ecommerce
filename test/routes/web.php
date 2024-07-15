@@ -25,12 +25,13 @@ Route::get('/', function () {
 Route::get('/newlogin', [LoginController::class, 'login']);
 Route::get('/newregister', [RegisterController::class,'register']);
 
+Route::post('/orders', [OrderController::class, 'store']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/add', [CartController::class, 'addToCart']);
-Route::get('cart/order', [OrderController::class, 'store']);
+Route::get('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
+
 
 //unessessary ata
 Route::get('/dashboard', function () {

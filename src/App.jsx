@@ -24,6 +24,8 @@ import BabiesKidsPage from './pages/BabiesKidsPage';
 import BooksPage from './pages/BooksPage';
 import PetCarePage from './pages/PetCarePage';
 
+import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
+
 
 export default function App() {
   return (
@@ -53,6 +55,8 @@ export default function App() {
           <Route path="/babies-kids" element={<BabiesKidsPage />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/pet-care" element={<PetCarePage />} />
+
+          <Route path="/perfume1" element={<Perfume1 />} />
         </Routes>
       </BrowserRouter>
     </div>

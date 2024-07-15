@@ -11,12 +11,20 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $categoryFilter = $request->query('category');
+        $searchQuery = $request->query('search');
 
         $productsQuery = Products::with(['category', 'inventory']);
 
         if ($categoryFilter) {
             $productsQuery->whereHas('category', function($query) use ($categoryFilter) {
                 $query->where('name', $categoryFilter);
+            });
+        }
+
+        if ($searchQuery) {
+            $productsQuery->where(function($query) use ($searchQuery) {
+                $query->where('name', 'LIKE', "%{$searchQuery}%");
+                      //->orWhere('desc', 'LIKE', "%{$searchQuery}%");
             });
         }
 

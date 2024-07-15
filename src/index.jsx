@@ -28,6 +28,8 @@ import PetCarePage from './pages/PetCarePage';
 
 import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
 
+import Chocolate1 from './pages/proddetpage/Chocolate1ProdPage';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -57,6 +59,8 @@ ReactDOM.render(
         <Route path="/pet-care" element={<PetCarePage />} />
 
         <Route path="/perfume1" element={<Perfume1 />} />
+
+        <Route path="/chocolate1" element={<Chocolate1 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

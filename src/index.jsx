@@ -19,6 +19,7 @@ import GadgetsPage from './pages/GadgetsPage';
 import ShoesPage from './pages/ShoesPage';
 import WomenShoesPage from './pages/WomenShoesPage';
 import MenShoesPage from './pages/MenShoesPage';
+import KidsShoesPage from './pages/KidsShoesPage';
 import SnacksPage from './pages/SnacksPage';
 import BeveragesPage from './pages/BeveragesPage';
 import BabiesKidsPage from './pages/BabiesKidsPage';
@@ -46,6 +47,7 @@ ReactDOM.render(
         <Route path="/shoes" element={<ShoesPage />} />
         <Route path="/womenshoes" element={<WomenShoesPage />} />
         <Route path="/menshoes" element={<MenShoesPage />} />
+        <Route path="/kidsshoes" element={<KidsShoesPage />} />
         <Route path="/snacks" element={<SnacksPage />} />
         <Route path="/beverages" element={<BeveragesPage />} />
         <Route path="/babies-kids" element={<BabiesKidsPage />} />

@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use Illuminate\Http\Request;
-
 use App\Models\CartItem;
-use App\Models\Orders;
-use App\Models\Products;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\JsonResponse;
 
 class CartController extends Controller
 {
@@ -21,7 +17,8 @@ class CartController extends Controller
         $this->cartService = $cartService;
     }
 
-    public function index(){
+    public function index()
+    {
         $userId = Auth::user()->id;
         $cartItems = CartItem::where("user_id", $userId)->get();
         return response()->json(['cartItems' => $cartItems], 200);
@@ -29,7 +26,12 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $data = $request->only('user_id', 'product_id', 'quantity');
+        $user = Auth::user();
+        $data = [
+            'user_id' => $user->id,
+            'product_id' => $request->product_id,
+            'quantity' => $request->quantity
+        ];
 
         $result = $this->cartService->addToCart($data);
 
@@ -39,4 +41,5 @@ class CartController extends Controller
 
         return response()->json(['errors' => $result['errors']], 422);
     }
+
 }

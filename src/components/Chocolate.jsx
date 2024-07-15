@@ -3,52 +3,116 @@ import FeaturedBrands from './FeaturedBrands';
 import { Button } from '@/components/ui/button';
 
 const Chocolate = () => {
-  // Generate image paths based on your preferred structure
   const getProductImagePath = (index) => `./src/assets/chocolates/product${index}.png`;
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="text-center">
-        <img src="./src/assets/HeroSemi1.png" alt="Feastables Logo" className="mx-auto" />
-      </div>
-      <div className="flex justify-center space-x-4 my-4">
-        {/* Featured Brands with customized button class */}
+    <div style={styles.container}>
+      <header style={styles.header}>
+        <img src="./src/assets/HeroSemi1.png" alt="Feastables Logo" style={styles.bannerImage} />
+      </header>
+      <div style={styles.categories}>
         <FeaturedBrands showHeader={false} buttonClass="custom-button-class" />
       </div>
-      <div className="my-4">
-        <h2 className="text-2xl font-bold">BEST SELLERS</h2>
-        <div className="grid grid-cols-4 gap-4 my-4"> {/* Maintain gap-4 for spacing between image boxes */}
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>BEST SELLERS</h2>
+        <div style={styles.bestSellersGrid}>
           {[...Array(8)].map((_, index) => (
-            <img
-              key={index}
-              src={getProductImagePath(index + 1)}
-              className="w-32 h-48 object-cover mx-auto my-2" // Added my-2 for vertical margin
-              alt={`Best Seller ${index + 1}`}
-            />
+            <div key={index} style={styles.bestSellersProduct}>
+              <img
+                src={getProductImagePath(index + 1)}
+                style={styles.productImage}
+                alt={`Best Seller ${index + 1}`}
+              />
+            </div>
           ))}
         </div>
-      </div>
-      <div className="text-center my-4">
+      </section>
+      <div style={styles.textCenter}>
         <Button>See More</Button>
       </div>
-      <div className="my-4">
-        <h2 className="text-2xl font-bold">ALL PRODUCTS</h2>
-        <div className="grid grid-cols-4 gap-4 my-4"> {/* Maintain gap-4 for spacing between image boxes */}
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>ALL PRODUCTS</h2>
+        <div style={styles.allProductsGrid}>
           {[...Array(8)].map((_, index) => (
-            <img
-              key={index}
-              src={getProductImagePath(index + 9)}
-              className="w-32 h-48 object-cover mx-auto my-2" // Added my-2 for vertical margin
-              alt={`All Product ${index + 9}`}
-            />
+            <div key={index} style={styles.allProduct}>
+              <img
+                src={getProductImagePath(index + 9)}
+                style={styles.productImage}
+                alt={`All Product ${index + 9}`}
+              />
+            </div>
           ))}
         </div>
-      </div>
-      <div className="text-center my-4">
+      </section>
+      <div style={styles.textCenter}>
         <Button>See More</Button>
       </div>
     </div>
   );
+};
+
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    padding: 0,
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0',
+    padding: '20px',
+    textAlign: 'center',
+  },
+  bannerImage: {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  categories: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
+  },
+  section: {
+    margin: '20px',
+    textAlign: 'center',
+  },
+  sectionHeader: {
+    fontWeight: 'bold',
+    fontSize: '36px',
+  },
+  bestSellersGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  bestSellersProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '300px',
+    backgroundColor: '#e0e0e0',
+  },
+  allProductsGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  allProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '250px',
+    backgroundColor: '#e0e0e0',
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  textCenter: {
+    textAlign: 'center',
+    margin: '20px 0',
+  },
 };
 
 export default Chocolate;

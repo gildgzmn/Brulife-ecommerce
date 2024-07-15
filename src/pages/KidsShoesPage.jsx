@@ -1,17 +1,16 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
-import HeroSale from '../components/HeroSale';
 import Footer from '../components/Footer';
+import KidsShoes from '../components/KidsShoes';
 
 
 
-export default function SalePage() {
+export default function KidsShoesPage() {
   return (
     <>
       <Navbar />
-      <HeroSale />
+      <KidsShoes />
       <Footer />
     </>
   )
 }
-

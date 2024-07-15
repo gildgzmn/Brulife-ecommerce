@@ -1,28 +1,173 @@
 import React from 'react';
+import { Button } from '@/components/ui/button';  
+import { Link } from 'react-router-dom';  
 
-const About = () => {
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    padding: 0,
+  },
+  banner: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: '20px',
+    marginBottom: '20px',
+  },
+  bannerImage: {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  categories: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
+  },
+  shadcnButtonContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  shadcnButton: {
+    margin: '0 10px',
+    backgroundColor: '#9e9e9e', // gray-400
+    color: '#fff',
+    border: 'none',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+  arrowIcon: {
+    marginLeft: '5px', // Adjust as needed
+  },
+  section: {
+    marginBottom: '20px',
+  },
+  sectionHeader: {
+    marginBottom: '10px',
+    textAlign: 'center',
+    fontWeight: 'bold', // Making the header bold
+    fontSize: '24px', // Increasing font size
+  },
+  booksGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    gap: '5px',
+  },
+  bookPlaceholder: {
+    position: 'relative', // Ensure relative positioning for absolute positioning of button
+    width: '300px',
+    height: '400px',
+    backgroundColor: '#e0e0e0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nextButton: {
+    position: 'absolute',
+    top: '50%', // Center vertically
+    right: '-30px', // Adjust as needed
+    transform: 'translateY(-50%)', // Center vertically
+    backgroundColor: 'black',
+    color: '#fff',
+    border: 'none',
+    padding: '10px',
+    cursor: 'pointer',
+  },
+  seeMoreButton: {
+    display: 'block',
+    margin: '20px auto', // Center horizontally
+    backgroundColor: 'black', 
+    color: '#fff',
+    border: 'none',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+};
+
+const Books = () => {
   return (
-    <div className="px-8 py-16 bg-white text-gray-800">
-      <section className="mb-14">
-        <h1 className="text-4xl font-bold mt-16 mb-8 ml-48" style={{ fontSize: '2.95rem' }}>ABOUT</h1>
-        <p className="text-lg leading-relaxed mx-48" style={{ fontSize: '1.35rem' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum tempor quam, non ornare lorem sollicitudin vitae. Pellentesque nec dolor eget mauris efficitur hendrerit. Sed ac pharetra nunc, et vestibulum odio. Morbi hendrerit pharetra ante convallis cursus. Sed ultricies ligula a dictum finibus. Nulla ullamcorper faucibus justo, non placerat ligula.
-        </p>
-      </section>
-      <section className="mb-14">
-        <h1 className="text-center text-4xl font-bold mb-12" style={{ fontSize: '2.55rem' }}>MISSION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Maecenas efficitur lobortis dui, sit amet hendrerit mauris rhoncus sed. Morbi eu quam pellentesque lorem aliquam tempor sed a mi. Vestibulum blandit pulvinar augue, varius dapibus nulla dignissim euismod. Proin convallis elit a mollis feugiat. Quisque viverra risus at semper scelerisque. Duis egestas tellus sed porta imperdiet. Aenean ante felis, ultricies vel ex vel, consectetur aliquam tortor. Vestibulum pharetra libero nulla, eget dignissim erat lobortis sed. Quisque nec ipsum consequat, vulputate diam eu, egestas purus. Quisque fermentum vulputate tempor. Quisque id neque diam. Aliquam lobortis tortor nec sagittis suscipit. Pellentesque non risus diam. Mauris malesuada neque non arcu malesuada, et placerat eros hendrerit. Nullam bibendum consequat ex, nec pulvinar mauris rhoncus ex.
-        </p>
-      </section>
-      <section>
-        <h1 className="text-center text-4xl font-bold mb-10" style={{ fontSize: '2.55rem' }}>VISION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Nullam sed sodales nunc. Duis elit lorem, ultricies et orci in, tristique iaculis quam. Praesent tristique est arcu, a luctus nisl laoreet placerat. Nulla maximus lacus magna, eu posuere lorem interdum et. Nulla egestas, ante ut iaculis placerat, massa orci vestibulum sapien, quis vestibulum ex enim non lacus. Ut facilisis lacus sed consectetur ullamcorper. Curabitur semper orci eget volutpat vulputate. Mauris mattis massa ligula, id iaculis suscipit. Quisque lorem erat, lobortis sit amet egestas nec, molestie posuere felis. Integer id malesuada est. Aliquam consequat ante eget nisl volutpat. Vestibulum nec justo enim, ullamcorper tincidunt elit.
-        </p>
-      </section>
+    <div style={styles.container}>
+      <div style={styles.banner}>
+        <img style={styles.bannerImage} src="./src/assets/HeroSemi17.png" alt="Icebreaker Book Cover" />
+      </div>
+      <div style={styles.categories}>
+        <Link to="/romance" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Romance</Button>
+        </Link>
+        <Link to="/action" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Action</Button>
+        </Link>
+        <Link to="/non-fiction" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Non-Fiction</Button>
+        </Link>
+        <Link to="/young-adult" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Young Adult</Button>
+        </Link>
+        <Link to="/crime" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Crime</Button>
+        </Link>
+        <Link to="/audio-books" style={styles.shadcnButtonContainer}>
+          <Button style={styles.shadcnButton}>Audio Books</Button>
+        </Link>
+      </div>
+      <div style={styles.section}>
+        <h2 style={styles.sectionHeader}>Featured Books</h2>
+        <div style={styles.booksGrid}>
+          <div style={styles.bookPlaceholder}>Book 1</div>
+          <div style={styles.bookPlaceholder}>Book 2</div>
+          <div style={styles.bookPlaceholder}>Book 3</div>
+          <div style={styles.bookPlaceholder}>
+            Book 4
+            <button style={styles.nextButton}>&gt;</button>
+          </div>
+        </div>
+        <button style={styles.seeMoreButton}>See More</button>
+      </div>
+      <div style={styles.section}>
+        <h2 style={styles.sectionHeader}>Mystery</h2>
+        <div style={styles.booksGrid}>
+          <div style={styles.bookPlaceholder}>Book 1</div>
+          <div style={styles.bookPlaceholder}>Book 2</div>
+          <div style={styles.bookPlaceholder}>Book 3</div>
+          <div style={styles.bookPlaceholder}>
+            Book 4
+            <button style={styles.nextButton}>&gt;</button>
+          </div>
+        </div>
+        <button style={styles.seeMoreButton}>See More</button>
+      </div>
+      <div style={styles.section}>
+        <h2 style={styles.sectionHeader}>Romance</h2>
+        <div style={styles.booksGrid}>
+          <div style={styles.bookPlaceholder}>Book 1</div>
+          <div style={styles.bookPlaceholder}>Book 2</div>
+          <div style={styles.bookPlaceholder}>Book 3</div>
+          <div style={styles.bookPlaceholder}>
+            Book 4
+            <button style={styles.nextButton}>&gt;</button>
+          </div>
+        </div>
+        <button style={styles.seeMoreButton}>See More</button>
+      </div>
+      <div style={styles.section}>
+        <h2 style={styles.sectionHeader}>Horror</h2>
+        <div style={styles.booksGrid}>
+          <div style={styles.bookPlaceholder}>Book 1</div>
+          <div style={styles.bookPlaceholder}>Book 2</div>
+          <div style={styles.bookPlaceholder}>Book 3</div>
+          <div style={styles.bookPlaceholder}>
+            Book 4
+            <button style={styles.nextButton}>&gt;</button>
+          </div>
+        </div>
+        <button style={styles.seeMoreButton}>See More</button>
+      </div>
     </div>
   );
-}
+};
 
-export default About;
+export default Books;

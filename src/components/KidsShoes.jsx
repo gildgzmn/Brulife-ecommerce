@@ -1,52 +1,52 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
-function Shoes() {
+function WomenShoes() {
   return (
-    <div className="Shoes" style={styles.container}>
+    <div className="MenShoes" style={styles.container}>
       <header style={styles.header}>
-        <img src="./src/assets/HeroSemi4.png" alt="Banner Image" style={styles.bannerImage} />
+        <img src="./src/assets/HeroSemi14.png" alt="Banner Image" style={styles.bannerImage} />
       </header>
       
       <nav style={styles.categories}>
-        <Link to="/breakfast" style={styles.link}>
-          <Button style={styles.shadcnButton}>BreakFast</Button>
+        <Link to="/menshoes" style={styles.link}>
+          <Button style={styles.shadcnButton}>MEN</Button>
         </Link>
-        <Link to="/lunch" style={styles.link}>
-          <Button style={styles.shadcnButton}>Lunch</Button>
+        <Link to="/womenshoes" style={styles.link}>
+          <Button style={styles.shadcnButton}>WOMEN</Button>
         </Link>
-        <Link to="/dinner" style={styles.link}>
-          <Button style={styles.shadcnButton}>Dinner</Button>
+        <Link to="/shoes" style={styles.link}>
+          <Button style={styles.shadcnButton}>SHOES</Button>
         </Link>
       </nav>
       
       <section style={styles.section}>
         <h2 style={styles.sectionHeader}>Best Sellers</h2>
         <div style={styles.bestSellersGrid}>
-          <BestSellerProduct imageSrc="./src/assets/FoodProd1.png" />
-          <BestSellerProduct imageSrc="./src/assets/FoodProd2.png" />
-          <BestSellerProduct imageSrc="./src/assets/FoodProd3.png" />
-          <BestSellerProduct imageSrc="./src/assets/FoodProd4.png" />
+          <BestSellerProduct imageSrc="./src/assets/KidsShoesProd1.png" />
+          <BestSellerProduct imageSrc="./src/assets/KidsShoesProd2.png" />
+          <BestSellerProduct imageSrc="./src/assets/KidsShoesProd3.png" />
+          <BestSellerProduct imageSrc="./src/assets/KidsShoesProd4.png" />
         </div>
       </section>
 
       {/* New banner section */}
       <header style={styles.header}>
-        <img src="./src/assets/HeroSemi6.png" alt="Another Banner Image" style={styles.bannerImage} />
+        <img src="./src/assets/HeroSemi15.png" alt="Another Banner Image" style={styles.bannerImage} />
       </header>
       
       <section style={styles.section}>
         <h2 style={styles.sectionHeader}>All Products</h2>
         <div style={styles.productGrid}>
-          <AllProduct imageSrc="./src/assets/Food1.png" />
-          <AllProduct imageSrc="./src/assets/Food2.png" />
-          <AllProduct imageSrc="./src/assets/Food3.png" />
-          <AllProduct imageSrc="./src/assets/Food4.png" />
-          <AllProduct imageSrc="./src/assets/Food5.png" />
-          <AllProduct imageSrc="./src/assets/Food6.png" />
-          <AllProduct imageSrc="./src/assets/Food7.png" />
-          <AllProduct imageSrc="./src/assets/Food8.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes1.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes2.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes3.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes4.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes5.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes6.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes7.png" />
+          <AllProduct imageSrc="./src/assets/KidsShoes8.png" />
         </div>
       </section>
       
@@ -130,14 +130,16 @@ const styles = {
     fontSize: '36px',
   },
   bestSellersGrid: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '20px',
     justifyContent: 'center',
-    flexWrap: 'wrap',
   },
   productGrid: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '20px',
     justifyContent: 'center',
-    flexWrap: 'wrap',
   },
   reviewGrid: {
     display: 'flex',
@@ -145,21 +147,18 @@ const styles = {
     flexWrap: 'wrap',
   },
   bestSellerProduct: {
-    margin: '10px',
-    width: '225px',
-    height: '350px',
+    width: '100%',
+    height: 'auto',
     backgroundColor: '#e0e0e0',
   },
   allProduct: {
-    margin: '10px',
-    width: '250px',
-    height: '250px',
+    width: '100%',
+    height: 'auto',
     backgroundColor: '#e0e0e0',
   },
   review: {
-    margin: '10px',
-    width: '150px',
-    height: '150px',
+    width: '100%',
+    height: 'auto',
     backgroundColor: '#e0e0e0',
   },
   productImage: {
@@ -174,4 +173,4 @@ const styles = {
   }
 };
 
-export default Shoes;
+export default WomenShoes;

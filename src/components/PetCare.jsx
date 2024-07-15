@@ -1,28 +1,118 @@
 import React from 'react';
+import FeaturedBrands from './FeaturedBrands';
+import { Button } from '@/components/ui/button';
 
-const About = () => {
+const Chocolate = () => {
+  const getProductImagePath = (index) => `./src/assets/petcare/Petcare${index}.png`;
+
   return (
-    <div className="px-8 py-16 bg-white text-gray-800">
-      <section className="mb-14">
-        <h1 className="text-4xl font-bold mt-16 mb-8 ml-48" style={{ fontSize: '2.95rem' }}>ABOUT</h1>
-        <p className="text-lg leading-relaxed mx-48" style={{ fontSize: '1.35rem' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum tempor quam, non ornare lorem sollicitudin vitae. Pellentesque nec dolor eget mauris efficitur hendrerit. Sed ac pharetra nunc, et vestibulum odio. Morbi hendrerit pharetra ante convallis cursus. Sed ultricies ligula a dictum finibus. Nulla ullamcorper faucibus justo, non placerat ligula.
-        </p>
+    <div style={styles.container}>
+      <header style={styles.header}>
+        <img src="./src/assets/HeroSemi12.png" alt="Feastables Logo" style={styles.bannerImage} />
+      </header>
+      <div style={styles.categories}>
+        <FeaturedBrands showHeader={false} buttonClass="custom-button-class" />
+      </div>
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>BEST SELLERS</h2>
+        <div style={styles.bestSellersGrid}>
+          {[...Array(8)].map((_, index) => (
+            <div key={index} style={styles.bestSellersProduct}>
+              <img
+                src={getProductImagePath(index + 1)}
+                style={styles.productImage}
+                alt={`Best Seller ${index + 1}`}
+              />
+            </div>
+          ))}
+        </div>
       </section>
-      <section className="mb-14">
-        <h1 className="text-center text-4xl font-bold mb-12" style={{ fontSize: '2.55rem' }}>MISSION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Maecenas efficitur lobortis dui, sit amet hendrerit mauris rhoncus sed. Morbi eu quam pellentesque lorem aliquam tempor sed a mi. Vestibulum blandit pulvinar augue, varius dapibus nulla dignissim euismod. Proin convallis elit a mollis feugiat. Quisque viverra risus at semper scelerisque. Duis egestas tellus sed porta imperdiet. Aenean ante felis, ultricies vel ex vel, consectetur aliquam tortor. Vestibulum pharetra libero nulla, eget dignissim erat lobortis sed. Quisque nec ipsum consequat, vulputate diam eu, egestas purus. Quisque fermentum vulputate tempor. Quisque id neque diam. Aliquam lobortis tortor nec sagittis suscipit. Pellentesque non risus diam. Mauris malesuada neque non arcu malesuada, et placerat eros hendrerit. Nullam bibendum consequat ex, nec pulvinar mauris rhoncus ex.
-        </p>
+      <div style={styles.textCenter}>
+        <Button>See More</Button>
+      </div>
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>ALL PRODUCTS</h2>
+        <div style={styles.allProductsGrid}>
+          {[...Array(8)].map((_, index) => (
+            <div key={index} style={styles.allProduct}>
+              <img
+                src={getProductImagePath(index + 9)}
+                style={styles.productImage}
+                alt={`All Product ${index + 9}`}
+              />
+            </div>
+          ))}
+        </div>
       </section>
-      <section>
-        <h1 className="text-center text-4xl font-bold mb-10" style={{ fontSize: '2.55rem' }}>VISION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Nullam sed sodales nunc. Duis elit lorem, ultricies et orci in, tristique iaculis quam. Praesent tristique est arcu, a luctus nisl laoreet placerat. Nulla maximus lacus magna, eu posuere lorem interdum et. Nulla egestas, ante ut iaculis placerat, massa orci vestibulum sapien, quis vestibulum ex enim non lacus. Ut facilisis lacus sed consectetur ullamcorper. Curabitur semper orci eget volutpat vulputate. Mauris mattis massa ligula, id iaculis suscipit. Quisque lorem erat, lobortis sit amet egestas nec, molestie posuere felis. Integer id malesuada est. Aliquam consequat ante eget nisl volutpat. Vestibulum nec justo enim, ullamcorper tincidunt elit.
-        </p>
-      </section>
+      <div style={styles.textCenter}>
+        <Button>See More</Button>
+      </div>
     </div>
   );
-}
+};
 
-export default About;
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    padding: 0,
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0',
+    padding: '20px',
+    textAlign: 'center',
+  },
+  bannerImage: {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  categories: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
+  },
+  section: {
+    margin: '20px',
+    textAlign: 'center',
+  },
+  sectionHeader: {
+    fontWeight: 'bold',
+    fontSize: '36px',
+  },
+  bestSellersGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  bestSellersProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '300px',
+    backgroundColor: '#e0e0e0',
+  },
+  allProductsGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  allProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '250px',
+    backgroundColor: '#e0e0e0',
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  textCenter: {
+    textAlign: 'center',
+    margin: '20px 0',
+  },
+};
+
+export default Chocolate;

@@ -22,29 +22,29 @@ function Shoes() {
       </nav>
       
       <section style={styles.section}>
-        <h2>Best Sellers</h2>
+        <h2 style={styles.sectionHeader}>Best Sellers</h2>
         <div style={styles.bestSellersGrid}>
-          <Product imageSrc="./src/assets/ShoesProd1.jpg" />
-          <Product imageSrc="./src/assets/ShoesProd2.jpg" />
-          <Product imageSrc="./src/assets/ShoesProd3.jpg" />
-          <Product imageSrc="./src/assets/ShoesProd4.jpg" />
+          <BestSellerProduct imageSrc="./src/assets/ShoesProd1.jpg" />
+          <BestSellerProduct imageSrc="./src/assets/ShoesProd2.jpg" />
+          <BestSellerProduct imageSrc="./src/assets/ShoesProd3.jpg" />
+          <BestSellerProduct imageSrc="./src/assets/ShoesProd4.jpg" />
         </div>
       </section>
       
       <section style={styles.section}>
-        <h2>All Products</h2>
+        <h2 style={styles.allProductsHeader}>All Products</h2>
         <div style={styles.productGrid}>
-          <Product imageSrc="./src/assets/Shoes1.png" />
-          <Product imageSrc="./src/assets/Shoes2.png" />
-          <Product imageSrc="./src/assets/Shoes3.png" />
-          <Product imageSrc="./src/assets/Shoes4.png" />
-          <Product imageSrc="./src/assets/Shoes5.png" />
-          <Product imageSrc="./src/assets/Shoes6.png" />
+          <AllProduct imageSrc="./src/assets/Shoes1.png" />
+          <AllProduct imageSrc="./src/assets/Shoes2.png" />
+          <AllProduct imageSrc="./src/assets/Shoes3.png" />
+          <AllProduct imageSrc="./src/assets/Shoes4.png" />
+          <AllProduct imageSrc="./src/assets/Shoes5.png" />
+          <AllProduct imageSrc="./src/assets/Shoes6.png" />
         </div>
       </section>
       
       <section style={styles.section}>
-        <h2>Community Reviews</h2>
+        <h2 style={styles.sectionHeader}>Community Reviews</h2>
         <div style={styles.reviewGrid}>
           <Review />
           <Review />
@@ -55,9 +55,17 @@ function Shoes() {
   );
 }
 
-function Product({ imageSrc }) {
+function BestSellerProduct({ imageSrc }) {
   return (
-    <div style={styles.product}>
+    <div style={styles.bestSellerProduct}>
+      <img src={imageSrc} alt="Product" style={styles.productImage} />
+    </div>
+  );
+}
+
+function AllProduct({ imageSrc }) {
+  return (
+    <div style={styles.allProduct}>
       <img src={imageSrc} alt="Product" style={styles.productImage} />
     </div>
   );
@@ -96,6 +104,12 @@ const styles = {
   },
   shadcnButton: {
     margin: '0 10px',
+    backgroundColor: '#9e9e9e', // gray-400
+    color: '#fff',
+    border: 'none',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
   },
   link: {
     textDecoration: 'none',
@@ -103,6 +117,14 @@ const styles = {
   section: {
     margin: '20px',
     textAlign: 'center',
+  },
+  sectionHeader: {
+    fontWeight: 'bold',
+    fontSize: '36px',
+  },
+  allProductsHeader: {
+    fontWeight: 'bold',
+    fontSize: '36px',
   },
   bestSellersGrid: {
     display: 'flex',
@@ -119,10 +141,16 @@ const styles = {
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
-  product: {
+  bestSellerProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '375px',
+    backgroundColor: '#e0e0e0',
+  },
+  allProduct: {
     margin: '10px',
     width: '150px',
-    height: '250px', // Increased height for Best Sellers
+    height: '175px',
     backgroundColor: '#e0e0e0',
   },
   review: {

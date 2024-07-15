@@ -1,28 +1,180 @@
 import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom'; 
 
-const About = () => {
+function Beverages() {
   return (
-    <div className="px-8 py-16 bg-white text-gray-800">
-      <section className="mb-14">
-        <h1 className="text-4xl font-bold mt-16 mb-8 ml-48" style={{ fontSize: '2.95rem' }}>ABOUT</h1>
-        <p className="text-lg leading-relaxed mx-48" style={{ fontSize: '1.35rem' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum tempor quam, non ornare lorem sollicitudin vitae. Pellentesque nec dolor eget mauris efficitur hendrerit. Sed ac pharetra nunc, et vestibulum odio. Morbi hendrerit pharetra ante convallis cursus. Sed ultricies ligula a dictum finibus. Nulla ullamcorper faucibus justo, non placerat ligula.
-        </p>
+    <div className="Shoes" style={styles.container}>
+      <header style={styles.header}>
+        <img src="./src/assets/HeroSemi2.png" alt="Banner Image" style={styles.bannerImage} />
+      </header>
+      
+      <nav style={styles.categories}>
+        <Link to="/coffee" style={styles.link}>
+          <Button style={styles.shadcnButton}>COFFEE</Button>
+        </Link>
+        <Link to="/alcohol" style={styles.link}>
+          <Button style={styles.shadcnButton}>ALCOHOL</Button>
+        </Link>
+        <Link to="/juice" style={styles.link}>
+          <Button style={styles.shadcnButton}>JUICE</Button>
+        </Link>
+        <Link to="/shake" style={styles.link}>
+          <Button style={styles.shadcnButton}>SHAKE</Button>
+        </Link>
+      </nav>
+      
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>Best Sellers</h2>
+        <div style={styles.bestSellersGrid}>
+          <BestSellerProduct imageSrc="./src/assets/BeveragesProd1.png" />
+          <BestSellerProduct imageSrc="./src/assets/BeveragesProd2.png" />
+          <BestSellerProduct imageSrc="./src/assets/BeveragesProd3.png" />
+          <BestSellerProduct imageSrc="./src/assets/BeveragesProd4.png" />
+        </div>
       </section>
-      <section className="mb-14">
-        <h1 className="text-center text-4xl font-bold mb-12" style={{ fontSize: '2.55rem' }}>MISSION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Maecenas efficitur lobortis dui, sit amet hendrerit mauris rhoncus sed. Morbi eu quam pellentesque lorem aliquam tempor sed a mi. Vestibulum blandit pulvinar augue, varius dapibus nulla dignissim euismod. Proin convallis elit a mollis feugiat. Quisque viverra risus at semper scelerisque. Duis egestas tellus sed porta imperdiet. Aenean ante felis, ultricies vel ex vel, consectetur aliquam tortor. Vestibulum pharetra libero nulla, eget dignissim erat lobortis sed. Quisque nec ipsum consequat, vulputate diam eu, egestas purus. Quisque fermentum vulputate tempor. Quisque id neque diam. Aliquam lobortis tortor nec sagittis suscipit. Pellentesque non risus diam. Mauris malesuada neque non arcu malesuada, et placerat eros hendrerit. Nullam bibendum consequat ex, nec pulvinar mauris rhoncus ex.
-        </p>
+
+      {/* New banner section */}
+      <header style={styles.header}>
+        <img src="./src/assets/HeroSemi6.png" alt="Another Banner Image" style={styles.bannerImage} />
+      </header>
+      
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>All Products</h2>
+        <div style={styles.productGrid}>
+          <AllProduct imageSrc="./src/assets/Beverages1.png" />
+          <AllProduct imageSrc="./src/assets/Beverages2.png" />
+          <AllProduct imageSrc="./src/assets/Beverages3.png" />
+          <AllProduct imageSrc="./src/assets/Beverages4.png" />
+          <AllProduct imageSrc="./src/assets/Beverages5.png" />
+          <AllProduct imageSrc="./src/assets/Beverages6.png" />
+          <AllProduct imageSrc="./src/assets/Beverages7.png" />
+          <AllProduct imageSrc="./src/assets/Beverages8.png" />
+        </div>
       </section>
-      <section>
-        <h1 className="text-center text-4xl font-bold mb-10" style={{ fontSize: '2.55rem' }}>VISION</h1>
-        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Nullam sed sodales nunc. Duis elit lorem, ultricies et orci in, tristique iaculis quam. Praesent tristique est arcu, a luctus nisl laoreet placerat. Nulla maximus lacus magna, eu posuere lorem interdum et. Nulla egestas, ante ut iaculis placerat, massa orci vestibulum sapien, quis vestibulum ex enim non lacus. Ut facilisis lacus sed consectetur ullamcorper. Curabitur semper orci eget volutpat vulputate. Mauris mattis massa ligula, id iaculis suscipit. Quisque lorem erat, lobortis sit amet egestas nec, molestie posuere felis. Integer id malesuada est. Aliquam consequat ante eget nisl volutpat. Vestibulum nec justo enim, ullamcorper tincidunt elit.
-        </p>
+      
+      <section style={styles.section}>
+        <h2 style={styles.sectionHeader}>Community Reviews</h2>
+        <div style={styles.reviewGrid}>
+          <Review />
+          <Review />
+          <Review />
+        </div>
       </section>
     </div>
   );
 }
 
-export default About;
+function BestSellerProduct({ imageSrc }) {
+  return (
+    <div style={styles.bestSellerProduct}>
+      <img src={imageSrc} alt="Product" style={styles.productImage} />
+    </div>
+  );
+}
+
+function AllProduct({ imageSrc }) {
+  return (
+    <div style={styles.allProduct}>
+      <img src={imageSrc} alt="Product" style={styles.productImage} />
+    </div>
+  );
+}
+
+function Review() {
+  return (
+    <div style={styles.review}>
+      <img src="placeholder.jpg" alt="Review" style={styles.reviewImage} />
+    </div>
+  );
+}
+
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    margin: 0,
+    padding: 0,
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f0f0f0',
+    padding: '20px',
+    textAlign: 'center',
+  },
+  bannerImage: {
+    maxWidth: '100%',
+    height: 'auto',
+  },
+  categories: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px 0',
+  },
+  shadcnButton: {
+    margin: '0 10px',
+    backgroundColor: '#9e9e9e', // gray-400
+    color: '#fff',
+    border: 'none',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer',
+  },
+  link: {
+    textDecoration: 'none',
+  },
+  section: {
+    margin: '20px',
+    textAlign: 'center',
+  },
+  sectionHeader: {
+    fontWeight: 'bold',
+    fontSize: '36px',
+  },
+  bestSellersGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  productGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  reviewGrid: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  },
+  bestSellerProduct: {
+    margin: '10px',
+    width: '225px',
+    height: '350px',
+    backgroundColor: '#e0e0e0',
+  },
+  allProduct: {
+    margin: '10px',
+    width: '250px',
+    height: '250px',
+    backgroundColor: '#e0e0e0',
+  },
+  review: {
+    margin: '10px',
+    width: '150px',
+    height: '150px',
+    backgroundColor: '#e0e0e0',
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  reviewImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  }
+};
+
+export default Beverages;

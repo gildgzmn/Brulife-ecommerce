@@ -2,37 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use App\Models\CartItem;
 use Illuminate\Http\Request;
-use App\Models\Orders;
+use App\Services\OrderService;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function store(Request $request){
-        $user = auth()->user();
-        $cartItems = CartItem::where('user_id', $user->id)->get();
-        $totalPrice = 0;
+    protected $orderService;
 
-        foreach($cartItems as $cartItem){
-            $product = $cartItem->product;
-            $price = $product->price;
-            $quantity = $cartItem->quantity;
-            $totalPrice += $price * $quantity;
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+    }
 
-            Orders::create([
-                'user_id' => $user->id,
-                'product_id' => $product->id,
-                'payment_id' => $request->payment_id,
-                'quantity' => $quantity,
-                'price' => $price,
-                'total_price' => $totalPrice,
-                'status' => 'pending',
+    // public function index()
+    // {
+    //     $userId = Auth::user()->id;
+    //     $orders = Orders::where('user_id', $userId)->get();
 
-            ]);
+    //     return response()->json(['orders' => $orders], 200);
+    // }
+
+    public function store(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $shippingAddress = $request->input('shipping_address');
+        $paymentMethod = $request->input('payment_method');
+
+        $order = $this->orderService->createOrder($userId, $shippingAddress, $paymentMethod);
+
+        if ($order['success']) {
+            return response()->json(['message' => 'Order placed successfully', 'order' => $order['order']], 201);
         }
 
-        CartItem::where('user_id', $user->id)->delete();
-        return response()->json(['message' => 'Order placed successfully'], 201);
-
+        return response()->json(['message' => $order['message'], 'error' => $order['error']], 400);
     }
 }

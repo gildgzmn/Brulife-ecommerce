@@ -31,9 +31,9 @@ export default function TopNavigation({ modifier = "" }) {
     <HoverCard>
       <HoverCardTrigger>
         <img
-          src="src/assets/Logo-1.png"
-          alt="Scent and Perfume logo"
-          className="h-14"
+          src="src/assets/Logo-6.png"
+          alt="E-commerce Logo"
+          className="h-14 w-14"
           onClick={() => navigate("/")}
         />
       </HoverCardTrigger>

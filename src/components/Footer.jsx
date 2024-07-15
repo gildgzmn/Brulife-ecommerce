@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/Logo-2.png'; 
+import logo from '../assets/Logo-7.png'; 
 import emailIcon from '../assets/Email.png'; 
 import phoneIcon from '../assets/Phone.png'; 
 import instagramIcon from '../assets/Instagram.png'; 
@@ -23,7 +23,7 @@ const Footer = () => {
             <div>
               <div className="mb-2 mt-4 ml-56">About</div>
               <ul>
-                <li><a href="/about" className="text-sm text-gray-400 hover:underline ml-60">About Scentsation Perfume</a></li>
+                <li><a href="/about" className="text-sm text-gray-400 hover:underline ml-60">About Personal and Home Care</a></li>
               </ul>
             </div>
           </div>
@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-10 border-t border-gray-700 pt-4 text-center">
-        <p>S c e n t s a t i o n  P e r f u m e</p>
+        <p>P e r s o n a l a n d H o m e C a r e</p>
         <p className="text-gray-500 mt-2">BRULife Greatholdings Corp. | Privacy policy | Terms & Conditions</p>
         <p className="text-gray-500 mt-2">Copyright © All rights reserved. Scentsation Perfume</p>
       </div>

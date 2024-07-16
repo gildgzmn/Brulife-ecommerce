@@ -17,10 +17,12 @@ const AllProducts = () => {
                 </ul>
             </div>
             <div style={styles.products}>
-                <h1 style={styles.productHeader}>ALL PRODUCTS</h1>
+                <h1 style={styles.productHeader}>All Products</h1>
                 <div style={styles.productGrid}>
                     {Array.from({ length: 12 }).map((_, index) => (
-                        <div key={index} style={styles.productCard}></div>
+                        <div key={index} style={styles.productCard}>
+                            <img src={`path_to_your_image${index}.jpg`} alt={`Product ${index}`} style={styles.productImage} />
+                        </div>
                     ))}
                 </div>
                 <Button className="load-more" style={styles.loadMore}>See More</Button>
@@ -80,10 +82,16 @@ const styles = {
     },
     productCard: {
         width: '100%',
-        paddingTop: '100%',
         background: '#e0e0e0',
         borderRadius: '8px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        overflow: 'hidden',
+        position: 'relative',
+    },
+    productImage: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
     },
     loadMore: {
         display: 'block',

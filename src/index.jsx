@@ -31,12 +31,15 @@ import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
 import Chocolate1 from './pages/proddetpage/Chocolate1ProdPage';
 
 import Shoes1 from './pages/proddetpage/Shoes1ProdPage';
+import Shoes2 from './pages/proddetpage/Shoes2ProdPage';
 
 import Beverages1 from './pages/proddetpage/Beverages1ProdPage';
 
 import Snacks1 from './pages/proddetpage/Snacks1ProdPage';
 
 import Gadgets1 from './pages/proddetpage/Gadgets1ProdPage';
+
+import Books1 from './pages/proddetpage/Books1ProdPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -71,12 +74,15 @@ ReactDOM.render(
         <Route path="/chocolate1" element={<Chocolate1 />} />
 
         <Route path="/shoes1" element={<Shoes1 />} />
+        <Route path="/shoes2" element={<Shoes2 />} />
 
         <Route path="/beverages1" element={<Beverages1 />} />
 
         <Route path="/snacks1" element={<Snacks1 />} />
 
         <Route path="/gadgets1" element={<Gadgets1 />} />
+
+        <Route path="/books1" element={<Books1 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

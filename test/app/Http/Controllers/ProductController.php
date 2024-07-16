@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
-use Inertia\Inertia;
+use App\Services\CartService;
 
 class ProductController extends Controller
 {
+    protected $cartService;
+
+    public function __construct(CartService $cartService){
+        $this->cartService = $cartService;
+    }
+
     public function index(Request $request)
     {
         $categoryFilter = $request->query('category');
@@ -57,5 +63,21 @@ class ProductController extends Controller
         ];
 
         return response()->json(['product' => $productData]);
+    }
+    public function addToCart(Request $request)
+    {
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $result = $this->cartService->addToCart($data);
+
+        if ($result['success']) {
+            return response()->json(['message' => 'Product added to cart successfully', 'cart' => $result['cart']], 201);
+        }
+
+        return response()->json(['errors' => $result['errors']], 422);
     }
 }

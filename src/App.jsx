@@ -36,6 +36,7 @@ import Beverages1 from './pages/proddetpage/Beverages1ProdPage';
 import Snacks1 from './pages/proddetpage/Snacks1ProdPage';
 
 import Gadgets1 from './pages/proddetpage/Gadgets1ProdPage';
+import Gadgets2 from './pages/proddetpage/Gadgets2ProdPage';
 
 import Books1 from './pages/proddetpage/Books1ProdPage';
 
@@ -85,6 +86,7 @@ export default function App() {
           <Route path="/snacks1" element={<Snacks1 />} />
 
           <Route path="/gadgets1" element={<Gadgets1 />} />
+          <Route path="/gadgets2" element={<Gadgets2 />} />
 
           <Route path="/books1" element={<Books1 />} />
 

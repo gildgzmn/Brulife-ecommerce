@@ -8,14 +8,16 @@ const AllProducts = () => {
                 <h2 style={styles.filterHeader}>Filters</h2>
                 <ul style={styles.filterList}>
                     {['Perfume', 'Chocolate', 'Beverages', 'Food', 'Book', 'Shoes', 'Pet Care', 'Kids', 'Gadgets'].map((item, index) => (
-                        <li key={index} style={item === 'Chocolate' ? { ...styles.filterItem, ...styles.selected } : styles.filterItem}>
-                            {item}
+                        <li key={index} style={styles.filterItem}>
+                            <Button style={styles.button}>
+                                {item}
+                            </Button>
                         </li>
                     ))}
                 </ul>
             </div>
             <div style={styles.products}>
-                <h1 style={styles.productHeader}>All Products</h1>
+                <h1 style={styles.productHeader}>ALL PRODUCTS</h1>
                 <div style={styles.productGrid}>
                     {Array.from({ length: 12 }).map((_, index) => (
                         <div key={index} style={styles.productCard}></div>
@@ -41,6 +43,8 @@ const styles = {
     },
     filterHeader: {
         marginBottom: '20px',
+        fontWeight: 'bold',
+        fontSize: '20px',
     },
     filterList: {
         listStyleType: 'none',
@@ -48,14 +52,16 @@ const styles = {
     },
     filterItem: {
         margin: '10px 0',
+    },
+    button: {
+        width: '100%',
         padding: '10px',
-        background: '#fff',
         borderRadius: '4px',
+        background: '#000',
+        color: '#fff',
+        border: '1px solid #000',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         cursor: 'pointer',
-    },
-    selected: {
-        background: '#ccc',
     },
     products: {
         flex: 1,
@@ -64,6 +70,8 @@ const styles = {
     productHeader: {
         textAlign: 'center',
         marginBottom: '20px',
+        fontWeight: 'bold',
+        fontSize: '24px',
     },
     productGrid: {
         display: 'grid',
@@ -80,6 +88,13 @@ const styles = {
     loadMore: {
         display: 'block',
         margin: '20px auto',
+        padding: '10px 20px',
+        background: '#000',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        transition: 'background 0.3s',
     },
 };
 

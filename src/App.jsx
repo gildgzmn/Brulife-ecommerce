@@ -28,6 +28,8 @@ import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
 
 import Chocolate1 from './pages/proddetpage/Chocolate1ProdPage';
 
+import Shoes1 from './pages/proddetpage/Shoes1ProdPage';
+
 
 export default function App() {
   return (
@@ -61,6 +63,8 @@ export default function App() {
           <Route path="/perfume1" element={<Perfume1 />} />
 
           <Route path="/chocolate1" element={<Chocolate1 />} />
+
+          <Route path="/shoes1" element={<Shoes1 />} />
         </Routes>
       </BrowserRouter>
     </div>

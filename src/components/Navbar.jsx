@@ -14,7 +14,7 @@ export default function TopNavigation({ modifier = "" }) {
     { name: "Home", path: "/", sections: [] },
     {
       name: "Shop",
-      path: "/",
+      path: "/allproducts",
       sections: [
         { name: "Women", path: "/women", info: "Women's details" },
         { name: "Men", path: "/men", info: "Men's details" },

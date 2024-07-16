@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AllProductsPage from './pages/AllProductsPage';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import WomenPage from './pages/WomenPage';
@@ -52,6 +53,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/allproducts" element={<AllProductsPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/women" element={<WomenPage />} />
         <Route path="/sale" element={<SalePage />} />

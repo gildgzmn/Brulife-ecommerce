@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import AllProducts from './pages/AllProductsPage';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import WomenPage from './pages/WomenPage';
@@ -51,6 +52,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/allproducts" element={<AllProducts />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/women" element={<WomenPage />} />
           <Route path="/sale" element={<SalePage />} />

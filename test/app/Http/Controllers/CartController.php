@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Services\CartService;
 use Illuminate\Http\Request;
 use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    protected $cartService;
-
-    public function __construct(CartService $cartService)
-    {
-        $this->cartService = $cartService;
-    }
-
     public function index()
     {
         $userId = Auth::user()->id;
@@ -24,22 +16,30 @@ class CartController extends Controller
         return response()->json(['cartItems' => $cartItems], 200);
     }
 
-    public function addToCart(Request $request)
-    {
-        $user = Auth::user();
-        $data = [
-            'user_id' => $user->id,
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity
-        ];
+    public function checkout(Request $request){
 
-        $result = $this->cartService->addToCart($data);
+        $userId = Auth::user()->id;
 
-        if ($result['success']) {
-            return response()->json(['message' => 'Product added to cart successfully', 'cart' => $result['cart']], 201);
-        }
-
-        return response()->json(['errors' => $result['errors']], 422);
     }
+
+    public function updateCartItem(Request $request, $id){
+
+        $cartItem = CartItem::findOrFail($id);
+        $cartItem->quantity = $request->input('quantity');
+        $cartItem->save();
+
+        return response()->json(['message' => 'Cart item updated'], 200);
+    }
+
+    public function removeFromCart(Request $request, $id){
+        $cartItem = CartItem::findOrFail($id);
+        $cartItem->delete();
+
+        return response()->json(['message' => 'Item removed from cart'], 200);
+    }
+
+
+
+
 
 }

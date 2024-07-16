@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
-const ChocolateProdDetails = () => {
+const GadgetsProdDetails = () => {
   const styles = {
     productDetails: {
       fontFamily: 'Arial, sans-serif',
@@ -18,9 +18,11 @@ const ChocolateProdDetails = () => {
       marginBottom: '20px',
     },
     productImage: {
-      width: '450px',
+      width: '400px',
       height: 'auto',
       marginRight: '20px',
+      marginLeft: '200px',
+      marginBottom: '20px',
     },
     productInfo: {
       maxWidth: '600px',
@@ -53,14 +55,14 @@ const ChocolateProdDetails = () => {
       padding: '0 200px',
       fontSize: '20px',
     },
-    relatedChocolate: {
+    relatedGadgets: {
       display: 'flex',
       justifyContent: 'space-around',
     },
-    chocolateItem: {
+    gadgetsItem: {
       textAlign: 'center',
     },
-    chocolateImage: {
+    gadgetsImage: {
       width: '300px',
       height: 'auto',
       marginBottom: '10px',
@@ -78,13 +80,13 @@ const ChocolateProdDetails = () => {
     <div style={styles.productDetails}>
       <div style={styles.productHeader}>
         <img 
-          src="./src/assets/DarkChocolate.png" 
-          alt="Drue Perfume" 
+          src="./src/assets/MxMaster.png" 
+          alt="Mice" 
           style={styles.productImage}
         />
         <div style={styles.productInfo}>
-          <h1 style={styles.productName}>DARK CHOCOLATE SEA SALT</h1>
-          <p style={styles.price}>₱199.99</p>
+          <h1 style={styles.productName}>MX MASTER 3S</h1>
+          <p style={styles.price}>₱3199.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 1401</p>
           <div style={styles.quantity}>
             <Button style={styles.quantityButton}>-</Button>
@@ -96,28 +98,28 @@ const ChocolateProdDetails = () => {
         </div>
       </div>
       <p style={styles.productDescription}>
-      If you're looking for the simple, yet perfect flavor combination, you've found your new favorite. Made from rich, organic and fair trade dark chocolate, this treat is elevated with a pinch of sea salt which complements the cocoa flavor.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum tempor quam, non ornare lorem sollicitudin vitae. Pellentesque nec dolor eget mauris efficitur hendrerit. Sed ac pharetra nunc, eu vestibulum odio. Morbi hendrerit pharetra ante convallis cursus. Sed ultricies ligula a dictum finibus. Nulla ullamcorper faucibus justo, non placerat ligula.
       </p>
-      <h2 style={styles.relatedTitle}>R e l a t e d  C h o c o l a t e </h2>
-      <div style={styles.relatedChocolate}>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/Almond.png" alt="ALMOND CHOCOLATE" style={styles.chocolateImage} />
-          <p>ALMOND CHOCOLATE</p>
-          <p style={styles.price}>₱99.99</p>
+      <h2 style={styles.relatedTitle}>R e l a t e d  G a d g e t s</h2>
+      <div style={styles.relatedGadgets}>
+        <div style={styles.gadgetsItem}>
+          <img src="./src/assets/Pebble.png" alt="Mice" style={styles.gadgetsImage} />
+          <p>PEBBLE M350</p>
+          <p style={styles.price}>₱2199.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 162</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/Chocolate.png" alt="QUINOA CRUNCH CHOCOLATE" style={styles.chocolateImage} />
-          <p>QUINOA CRUNCH CHOCOLATE</p>
-          <p style={styles.price}>₱199.99</p>
+        <div style={styles.gadgetsItem}>
+          <img src="./src/assets/Gadget.png" alt="Mice" style={styles.gadgetsImage} />
+          <p>M100R CORDED MOUSE</p>
+          <p style={styles.price}>₱2199.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 1401</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/MilkChocolate.png" alt="MILK CHOCOLATE" style={styles.chocolateImage} />
-          <p>MILK CHOCOLATE</p>
-          <p style={styles.price}>₱199.99</p>
+        <div style={styles.gadgetsItem}>
+          <img src="./src/assets/Signature.png" alt="Mice" style={styles.gadgetsImage} />
+          <p>SIGNATURE M650</p>
+          <p style={styles.price}>₱2199.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 805</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
@@ -126,4 +128,4 @@ const ChocolateProdDetails = () => {
   );
 };
 
-export default ChocolateProdDetails;
+export default GadgetsProdDetails;

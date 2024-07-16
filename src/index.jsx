@@ -32,6 +32,12 @@ import Chocolate1 from './pages/proddetpage/Chocolate1ProdPage';
 
 import Shoes1 from './pages/proddetpage/Shoes1ProdPage';
 
+import Beverages1 from './pages/proddetpage/Beverages1ProdPage';
+
+import Snacks1 from './pages/proddetpage/Snacks1ProdPage';
+
+import Gadgets1 from './pages/proddetpage/Gadgets1ProdPage';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -65,6 +71,12 @@ ReactDOM.render(
         <Route path="/chocolate1" element={<Chocolate1 />} />
 
         <Route path="/shoes1" element={<Shoes1 />} />
+
+        <Route path="/beverages1" element={<Beverages1 />} />
+
+        <Route path="/snacks1" element={<Snacks1 />} />
+
+        <Route path="/gadgets1" element={<Gadgets1 />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

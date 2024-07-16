@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
-const ChocolateProdDetails = () => {
+const BeveragesProdDetails = () => {
   const styles = {
     productDetails: {
       fontFamily: 'Arial, sans-serif',
@@ -18,9 +18,10 @@ const ChocolateProdDetails = () => {
       marginBottom: '20px',
     },
     productImage: {
-      width: '450px',
+      width: '350px',
       height: 'auto',
       marginRight: '20px',
+      marginLeft: '200px',
     },
     productInfo: {
       maxWidth: '600px',
@@ -53,14 +54,14 @@ const ChocolateProdDetails = () => {
       padding: '0 200px',
       fontSize: '20px',
     },
-    relatedChocolate: {
+    relatedSnacks: {
       display: 'flex',
       justifyContent: 'space-around',
     },
-    chocolateItem: {
+    snacksItem: {
       textAlign: 'center',
     },
-    chocolateImage: {
+    snacksImage: {
       width: '300px',
       height: 'auto',
       marginBottom: '10px',
@@ -78,13 +79,13 @@ const ChocolateProdDetails = () => {
     <div style={styles.productDetails}>
       <div style={styles.productHeader}>
         <img 
-          src="./src/assets/DarkChocolate.png" 
-          alt="Drue Perfume" 
+          src="./src/assets/Chile Limon.png" 
+          alt="Beverages" 
           style={styles.productImage}
         />
         <div style={styles.productInfo}>
-          <h1 style={styles.productName}>DARK CHOCOLATE SEA SALT</h1>
-          <p style={styles.price}>₱199.99</p>
+          <h1 style={styles.productName}>LAYS CHILE LIMON FLAVORED POTATO CHIPS</h1>
+          <p style={styles.price}>₱99.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 1401</p>
           <div style={styles.quantity}>
             <Button style={styles.quantityButton}>-</Button>
@@ -96,28 +97,28 @@ const ChocolateProdDetails = () => {
         </div>
       </div>
       <p style={styles.productDescription}>
-      If you're looking for the simple, yet perfect flavor combination, you've found your new favorite. Made from rich, organic and fair trade dark chocolate, this treat is elevated with a pinch of sea salt which complements the cocoa flavor.
+      It all starts with farm-grown potatoes, cooked and seasoned to perfection. Then we add the spice of chilies and the zing of real lime. So every LAY'S® pototato chip is perfectly crispy and delicious. Happiness in Every Bite.®
       </p>
-      <h2 style={styles.relatedTitle}>R e l a t e d  C h o c o l a t e </h2>
-      <div style={styles.relatedChocolate}>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/Almond.png" alt="ALMOND CHOCOLATE" style={styles.chocolateImage} />
-          <p>ALMOND CHOCOLATE</p>
-          <p style={styles.price}>₱99.99</p>
+      <h2 style={styles.relatedTitle}>R e l a t e d  S n a c k s</h2>
+      <div style={styles.relatedSnacks}>
+        <div style={styles.snacksItem}>
+          <img src="./src/assets/ClassicPotato.png" alt="Chips" style={styles.snacksImage} />
+          <p>LAYS CLASSIC POTATO CHIPS</p>
+          <p style={styles.price}>₱999.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 162</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/Chocolate.png" alt="QUINOA CRUNCH CHOCOLATE" style={styles.chocolateImage} />
-          <p>QUINOA CRUNCH CHOCOLATE</p>
-          <p style={styles.price}>₱199.99</p>
+        <div style={styles.snacksItem}>
+          <img src="./src/assets/PotatoChips.png" alt="Chips" style={styles.snacksImage} />
+          <p>LAYS POTATO CHIPS</p>
+          <p style={styles.price}>₱999.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 1401</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
-        <div style={styles.chocolateItem}>
-          <img src="./src/assets/MilkChocolate.png" alt="MILK CHOCOLATE" style={styles.chocolateImage} />
-          <p>MILK CHOCOLATE</p>
-          <p style={styles.price}>₱199.99</p>
+        <div style={styles.snacksItem}>
+          <img src="./src/assets/BarbequeFlavor.png" alt="Chips" style={styles.snacksImage} />
+          <p>LAYS BARBEQUE FLAVOR POTATO CHIPS</p>
+          <p style={styles.price}>₱999.99</p>
           <p style={styles.rating}>⭐⭐⭐⭐⭐ 805</p>
           <Button style={styles.addToCart}>Add to Cart</Button>
         </div>
@@ -126,4 +127,4 @@ const ChocolateProdDetails = () => {
   );
 };
 
-export default ChocolateProdDetails;
+export default BeveragesProdDetails;

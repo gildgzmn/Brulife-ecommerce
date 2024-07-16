@@ -26,7 +26,7 @@ const BestSeller = () => {
     { id: 6, imageUrl: product6, name: 'MX MASTER 3S', price: '₱ 999.99', rating: 4.0, path: '/gadgets1' },
     { id: 7, imageUrl: product7, name: 'Harry Potter American Books', price: '₱ 2999.99', rating: 5.0, path: '/books1' },
     { id: 8, imageUrl: product8, name: 'ZEPHYR LS', price: '₱ 5999.99', rating: 4.0, path: '/shoes2' },
-    { id: 9, imageUrl: product9, name: 'Dehydrated Chicken Jerky Dogs Treats', price: '₱ 99.99', rating: 5.0, path: '/petfood1' },
+    { id: 9, imageUrl: product9, name: 'Dehydrated Chicken Jerky Dogs Treats', price: '₱ 99.99', rating: 5.0, path: '/petcare1' },
     { id: 10, imageUrl: product10, name: 'Pampers', price: '₱ 399.99', rating: 5.0, path: '/kids1' },
     { id: 11, imageUrl: product11, name: 'Bonakid 3+', price: '₱ 999.99', rating: 5.0, path: '/kids2' },
     { id: 12, imageUrl: product12, name: 'IPhone 15 Pro Max', price: '₱ 99.99', rating: 5.0, path: '/gadgets2' },

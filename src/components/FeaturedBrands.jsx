@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import brand1 from '../assets/brand1.png';
 import brand2 from '../assets/brand2.png';
 import brand3 from '../assets/brand3.png';
@@ -18,7 +19,25 @@ import brand16 from '../assets/brand16.png';
 import { Button } from '@/components/ui/button'; 
 
 const FeaturedBrands = ({ showHeader = true, buttonClass = '' }) => {
-  const brands = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13, brand14, brand15, brand16];
+  const brands = [
+    { image: brand1, path: '/chocolate' },
+    { image: brand2, path: '/beverages' },
+    { image: brand3, path: '/perfume' },
+    { image: brand4, path: '/gadgets' },
+    { image: brand5, path: '/snacks' },
+    { image: brand6, path: '/shoes' },
+    { image: brand7, path: '/gadgets' },
+    { image: brand8, path: '/beverages' },
+    { image: brand9, path: '/gadgets' },
+    { image: brand10, path: '/chocolate' },
+    { image: brand11, path: '/' },
+    { image: brand12, path: '/gadgets' },
+    { image: brand13, path: '/' },
+    { image: brand14, path: '/shoes' },
+    { image: brand15, path: '/beverages' },
+    { image: brand16, path: '/snacks' },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const visibleBrands = 4;
 
@@ -49,16 +68,18 @@ const FeaturedBrands = ({ showHeader = true, buttonClass = '' }) => {
         <div className="grid grid-cols-4 gap-4">
           {getDisplayedBrands().map((brand, index) => (
             <div key={index} className="w-44 p-4 relative">
-              <div
-                className="flex justify-center items-center h-40 p-4 border rounded-lg shadow-lg bg-gray-300 cursor-pointer transform transition-transform hover:scale-105"
-                onClick={() => handleClick((currentIndex + index) % brands.length)}
-              >
-                <img
-                  src={brand}
-                  alt={`Brand ${index + 1}`}
-                  className="max-h-full max-w-full"
-                />
-              </div>
+              <Link to={brand.path}>
+                <div
+                  className="flex justify-center items-center h-40 p-4 border rounded-lg shadow-lg bg-gray-300 cursor-pointer transform transition-transform hover:scale-105"
+                  onClick={() => handleClick((currentIndex + index) % brands.length)}
+                >
+                  <img
+                    src={brand.image}
+                    alt={`Brand ${index + 1}`}
+                    className="max-h-full max-w-full"
+                  />
+                </div>
+              </Link>
               {index === 0 && (
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 mx-auto mt-2"></div>
               )}

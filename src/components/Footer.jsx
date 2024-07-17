@@ -23,7 +23,7 @@ const Footer = () => {
             <div>
               <div className="mb-2 mt-4 ml-56">About</div>
               <ul>
-                <li><a href="/about" className="text-sm text-gray-400 hover:underline ml-60">About Personal and Home Care</a></li>
+                <li><a href="/about" className="text-sm text-gray-400 hover:underline ml-60">About Us</a></li>
               </ul>
             </div>
           </div>
@@ -45,9 +45,9 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-10 border-t border-gray-700 pt-4 text-center">
-        <p>P e r s o n a l a n d H o m e C a r e</p>
+        <p>Right Personal and Home Care Products Trading</p>
         <p className="text-gray-500 mt-2">BRULife Greatholdings Corp. | Privacy policy | Terms & Conditions</p>
-        <p className="text-gray-500 mt-2">Copyright © All rights reserved. Scentsation Perfume</p>
+        <p className="text-gray-500 mt-2">Copyright © All rights reserved. Personal and Home Care</p>
       </div>
     </footer>
   );

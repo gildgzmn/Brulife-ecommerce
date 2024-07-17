@@ -20,7 +20,11 @@ import WomenShoesPage from './pages/WomenShoesPage';
 import MenShoesPage from './pages/MenShoesPage';
 import KidsShoesPage from './pages/KidsShoesPage';
 import SnacksPage from './pages/SnacksPage';
+import BreakFastPage from './pages/BreakFastPage';
+import LunchPage from './pages/LunchPage';
+import DinnerPage from './pages/DinnerPage';
 import BeveragesPage from './pages/BeveragesPage';
+
 import BabiesKidsPage from './pages/BabiesKidsPage';
 import BooksPage from './pages/BooksPage';
 import PetCarePage from './pages/PetCarePage';
@@ -66,12 +70,19 @@ export default function App() {
           <Route path="/perfume" element={<PerfumePage />} />
           <Route path="/chocolate" element={<ChocolatePage />} />
           <Route path="/gadgets" element={<GadgetsPage />} />
+
           <Route path="/shoes" element={<ShoesPage />} />
           <Route path="/womenshoes" element={<WomenShoesPage />} />
           <Route path="/menshoes" element={<MenShoesPage />} />
           <Route path="/kidsshoes" element={<KidsShoesPage />} />
+
           <Route path="/snacks" element={<SnacksPage />} />
+          <Route path="/breakfast" element={<BreakFastPage />} />
+          <Route path="/lunch" element={<LunchPage />} />
+          <Route path="/dinner" element={<DinnerPage />} />
+
           <Route path="/beverages" element={<BeveragesPage />} />
+
           <Route path="/babies-kids" element={<BabiesKidsPage />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/pet-care" element={<PetCarePage />} />

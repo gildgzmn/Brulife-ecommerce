@@ -64,40 +64,42 @@ const FeaturedBrands = ({ showHeader = true, buttonClass = '' }) => {
   return (
     <section className="py-8 relative">
       {showHeader && <h2 className="text-4xl font-bold mt-4 mb-2 text-center">Featured Brands</h2>}
-      <div className="flex justify-center mt-16 relative">
-        <div className="grid grid-cols-4 gap-4">
-          {getDisplayedBrands().map((brand, index) => (
-            <div key={index} className="w-44 p-4 relative">
-              <Link to={brand.path}>
-                <div
-                  className="flex justify-center items-center h-40 p-4 border rounded-lg shadow-lg bg-gray-300 cursor-pointer transform transition-transform hover:scale-105"
-                  onClick={() => handleClick((currentIndex + index) % brands.length)}
-                >
-                  <img
-                    src={brand.image}
-                    alt={`Brand ${index + 1}`}
-                    className="max-h-full max-w-full"
-                  />
-                </div>
-              </Link>
-              {index === 0 && (
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 mx-auto mt-2"></div>
-              )}
-            </div>
-          ))}
+      <div className="container mx-auto">
+        <div className="flex justify-center mt-16 relative">
+          <div className="grid grid-cols-4 gap-4">
+            {getDisplayedBrands().map((brand, index) => (
+              <div key={index} className="w-44 p-4 relative">
+                <Link to={brand.path}>
+                  <div
+                    className="flex justify-center items-center h-40 p-4 border rounded-lg shadow-lg bg-gray-300 cursor-pointer transform transition-transform hover:scale-105"
+                    onClick={() => handleClick((currentIndex + index) % brands.length)}
+                  >
+                    <img
+                      src={brand.image}
+                      alt={`Brand ${index + 1}`}
+                      className="max-h-full max-w-full"
+                    />
+                  </div>
+                </Link>
+                {index === 0 && (
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-800 mx-auto mt-2"></div>
+                )}
+              </div>
+            ))}
+          </div>
+          <Button
+            className={`absolute top-1/2 left-0 transform -translate-y-1/2 z-10 ${buttonClass}`}
+            onClick={handlePrev}
+          >
+            &lt;
+          </Button>
+          <Button
+            className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 ${buttonClass}`}
+            onClick={handleNext}
+          >
+            &gt;
+          </Button>
         </div>
-        <Button
-          className={`absolute top-1/2 left-0 transform -translate-y-1/2 z-10 ${buttonClass}`}
-          onClick={handlePrev}
-        >
-          &lt;
-        </Button>
-        <Button
-          className={`absolute top-1/2 right-0 transform -translate-y-1/2 z-10 ${buttonClass}`}
-          onClick={handleNext}
-        >
-          &gt;
-        </Button>
       </div>
     </section>
   );

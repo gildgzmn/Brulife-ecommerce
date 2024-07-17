@@ -6,46 +6,50 @@ const Chocolate = () => {
   const getProductImagePath = (index) => `./src/assets/chocolates/product${index}.png`;
 
   return (
-    <div style={styles.container}>
+    <div className="container mx-auto">
       <header style={styles.header}>
         <img src="./src/assets/HeroSemi1.png" alt="Feastables Logo" style={styles.bannerImage} />
       </header>
       <div style={styles.categories}>
         <FeaturedBrands showHeader={false} buttonClass="custom-button-class" />
       </div>
-      <section style={styles.section}>
-        <h2 style={styles.sectionHeader}>BEST SELLERS</h2>
-        <div style={styles.bestSellersGrid}>
-          {[...Array(8)].map((_, index) => (
-            <div key={index} style={styles.bestSellersProduct}>
-              <img
-                src={getProductImagePath(index + 1)}
-                style={styles.productImage}
-                alt={`Best Seller ${index + 1}`}
-              />
-            </div>
-          ))}
+      <div className="container mx-auto">
+        <section style={styles.section}>
+          <h2 style={styles.sectionHeader}>BEST SELLERS</h2>
+          <div style={styles.bestSellersGrid}>
+            {[...Array(8)].map((_, index) => (
+              <div key={index} style={styles.bestSellersProduct}>
+                <img
+                  src={getProductImagePath(index + 1)}
+                  style={styles.productImage}
+                  alt={`Best Seller ${index + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+        <div style={styles.textCenter}>
+          <Button>See More</Button>
         </div>
-      </section>
-      <div style={styles.textCenter}>
-        <Button>See More</Button>
       </div>
-      <section style={styles.section}>
-        <h2 style={styles.sectionHeader}>ALL PRODUCTS</h2>
-        <div style={styles.allProductsGrid}>
-          {[...Array(8)].map((_, index) => (
-            <div key={index} style={styles.allProduct}>
-              <img
-                src={getProductImagePath(index + 9)}
-                style={styles.productImage}
-                alt={`All Product ${index + 9}`}
-              />
-            </div>
-          ))}
+      <div className="container mx-auto">
+        <section style={styles.section}>
+          <h2 style={styles.sectionHeader}>ALL PRODUCTS</h2>
+          <div style={styles.allProductsGrid}>
+            {[...Array(8)].map((_, index) => (
+              <div key={index} style={styles.allProduct}>
+                <img
+                  src={getProductImagePath(index + 9)}
+                  style={styles.productImage}
+                  alt={`All Product ${index + 9}`}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+        <div style={styles.textCenter}>
+          <Button>See More</Button>
         </div>
-      </section>
-      <div style={styles.textCenter}>
-        <Button>See More</Button>
       </div>
     </div>
   );

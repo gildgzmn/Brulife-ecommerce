@@ -43,6 +43,10 @@ const styles = {
   },
   section: {
     marginBottom: '20px',
+    padding: '20px', // Adding padding to create container effect
+    backgroundColor: '#fff', // Adding background color for contrast
+    boxShadow: '0 0 10px rgba(0,0,0,0.1)', // Adding shadow for depth
+    borderRadius: '8px', // Adding rounded corners
   },
   sectionHeader: {
     marginBottom: '10px',

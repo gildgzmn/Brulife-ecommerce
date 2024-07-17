@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 
 function Shoes() {
   return (
-    <div className="Shoes" style={styles.container}>
+    <div className="container mx-auto" style={styles.container}>
       <header style={styles.header}>
         <img src="./src/assets/HeroSemi7.png" alt="Banner Image" style={styles.bannerImage} />
       </header>

@@ -43,22 +43,24 @@ const HeroSemi = () => {
 
   return (
     <section style={heroStyle}>
-      <Button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 transition-colors z-10"
-        onClick={handlePrev}
-        variant="contained" // Adjust the variant and color as needed
-        color="primary"
-      >
-        &lt;
-      </Button>
-      <Button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 transition-colors z-10"
-        onClick={handleNext}
-        variant="contained" // Adjust the variant and color as needed
-        color="primary"
-      >
-        &gt;
-      </Button>
+      <div className="container mx-auto h-full flex items-center justify-center">
+        <Button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 transition-colors z-10"
+          onClick={handlePrev}
+          variant="contained" // Adjust the variant and color as needed
+          color="primary"
+        >
+          &lt;
+        </Button>
+        <Button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-600 transition-colors z-10"
+          onClick={handleNext}
+          variant="contained" // Adjust the variant and color as needed
+          color="primary"
+        >
+          &gt;
+        </Button>
+      </div>
     </section>
   );
 };

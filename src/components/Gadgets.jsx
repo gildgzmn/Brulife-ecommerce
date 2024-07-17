@@ -6,7 +6,7 @@ const Gadgets = () => {
   const getProductImagePath = (index) => `./src/assets/gadgets/phone${index}.png`;
 
   return (
-    <div style={styles.container}>
+    <div className="container mx-auto">
       <header style={styles.header}>
         <img src="./src/assets/HeroSemi5.png" alt="Feastables Logo" style={styles.bannerImage} />
       </header>

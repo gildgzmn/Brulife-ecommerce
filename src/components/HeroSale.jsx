@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'; 
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import HeroImage1 from '../assets/HeroSale1.png';
 import HeroImage2 from '../assets/HeroSale2.jpg';
 import HeroImage3 from '../assets/HeroSale3.jpg';
@@ -28,28 +28,30 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative">
-      <div
-        className="hero bg-cover bg-center relative"
-        style={{
-          backgroundImage: `url(${heroImages[currentHeroIndex]})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          width: '100%',
-          height: 'auto',
-          aspectRatio: '1920 / 1080',
-        }}
-      >
-        <Button
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 flex items-center"
-          onClick={nextHero}
-          variant="contained" // Assuming 'contained' is a valid variant for Shadcn UI Button
-          color="primary" // Adjust the color as needed
+    <section className="relative">
+      <div className="container mx-auto">
+        <div
+          className="hero bg-cover bg-center relative"
+          style={{
+            backgroundImage: `url(${heroImages[currentHeroIndex]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            width: '100%',
+            height: 'auto',
+            aspectRatio: '1920 / 1080',
+          }}
         >
-          <FontAwesomeIcon icon={faAngleRight} className="text-lg" /> {/* Right arrow icon */}
-        </Button>
+          <Button
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 flex items-center"
+            onClick={nextHero}
+            variant="contained" // Assuming 'contained' is a valid variant for Shadcn UI Button
+            color="primary" // Adjust the color as needed
+          >
+            <FontAwesomeIcon icon={faAngleRight} className="text-lg" /> {/* Right arrow icon */}
+          </Button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

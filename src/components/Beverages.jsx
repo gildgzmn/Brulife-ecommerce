@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 
 function Beverages() {
   return (
-    <div className="Shoes" style={styles.container}>
+    <div className="Beverages container mx-auto" style={styles.container}>
+      {/* Top Hero Section */}
       <header style={styles.header}>
         <img src="./src/assets/HeroSemi2.png" alt="Banner Image" style={styles.bannerImage} />
       </header>
       
+      {/* Navigation Links */}
       <nav style={styles.categories}>
         <Link to="/coffee" style={styles.link}>
           <Button style={styles.shadcnButton}>COFFEE</Button>
@@ -24,6 +26,7 @@ function Beverages() {
         </Link>
       </nav>
       
+      {/* Best Sellers Section */}
       <section style={styles.section}>
         <h2 style={styles.sectionHeader}>Best Sellers</h2>
         <div style={styles.bestSellersGrid}>
@@ -34,11 +37,12 @@ function Beverages() {
         </div>
       </section>
 
-      {/* New banner section */}
+      {/* New Banner Section */}
       <header style={styles.header}>
         <img src="./src/assets/HeroSemi6.png" alt="Another Banner Image" style={styles.bannerImage} />
       </header>
       
+      {/* All Products Section */}
       <section style={styles.section}>
         <h2 style={styles.sectionHeader}>All Products</h2>
         <div style={styles.productGrid}>
@@ -53,6 +57,7 @@ function Beverages() {
         </div>
       </section>
       
+      {/* Community Reviews Section */}
       <section style={styles.section}>
         <h2 style={styles.sectionHeader}>Community Reviews</h2>
         <div style={styles.reviewGrid}>

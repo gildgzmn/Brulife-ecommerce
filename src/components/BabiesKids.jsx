@@ -13,6 +13,10 @@ const styles = {
     backgroundColor: '#f0f0f0',
     padding: '20px',
   },
+  bannerImageContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
   bannerImage: {
     maxWidth: '100%',
     height: 'auto',
@@ -108,7 +112,9 @@ const BabiesKids = () => {
   return (
     <div style={styles.container}>
       <header style={styles.header}>
-        <img src="./src/assets/HeroSemi16.png" alt="Timeless Designs Treasured Moments" style={styles.bannerImage} />
+        <div style={styles.bannerImageContainer}>
+          <img src="./src/assets/HeroSemi16.png" alt="Timeless Designs Treasured Moments" style={styles.bannerImage} />
+        </div>
       </header>
       <nav style={styles.categories}>
         <Link to="/newborn" style={styles.link}>

@@ -27,20 +27,22 @@ const CategoryGrid = () => {
 
   return (
     <section className="my-10">
-      <h2 className="text-4xl font-bold mb-8 text-center">C A T E G O R I E S</h2>
-      <div className="grid grid-cols-3 gap-6">
-        {categories.map((category) => (
-          <Link key={category.id} to={category.path} className="border rounded-lg overflow-hidden cursor-pointer relative">
-            <img
-              src={category.imageUrl}
-              alt={category.categoryName}
-              className="w-full h-60 object-cover transition-transform duration-300 transform hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <h3 className="text-3xl font-bold text-white">{category.categoryName}</h3>
-            </div>
-          </Link>
-        ))}
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-bold mb-8 text-center">C A T E G O R I E S</h2>
+        <div className="grid grid-cols-3 gap-6">
+          {categories.map((category) => (
+            <Link key={category.id} to={category.path} className="border rounded-lg overflow-hidden cursor-pointer relative">
+              <img
+                src={category.imageUrl}
+                alt={category.categoryName}
+                className="w-full h-60 object-cover transition-transform duration-300 transform hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-3xl font-bold text-white">{category.categoryName}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

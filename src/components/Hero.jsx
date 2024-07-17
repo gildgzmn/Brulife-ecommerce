@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons'; // Import the right arrow icon
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'; 
 import HeroImage1 from '../assets/Hero1.png';
 import HeroImage2 from '../assets/Hero2.png';
 import HeroImage3 from '../assets/Hero3.png';
@@ -40,6 +40,8 @@ const Hero = () => {
           aspectRatio: '1920 / 1080',
         }}
       >
+        <div className="container mx-auto h-full flex items-center justify-center">
+        </div>
         <Button
           className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 flex items-center"
           onClick={nextHero}

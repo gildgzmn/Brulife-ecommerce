@@ -42,43 +42,45 @@ const BestSeller = () => {
 
   return (
     <section className="my-10">
-      <h2 className="text-4xl font-bold mb-8 text-center">B E S T S E L L E R S</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="border rounded-lg p-4 shadow-lg overflow-hidden cursor-pointer relative"
-          >
-            <Link to={product.path}> {/* Wrap with Link component */}
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className="w-full h-48 object-cover mb-4"
-                onClick={() => handleProductClick(product)}
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                <div>
-                  <p className="text-lg font-bold mb-2">{product.name}</p>
-                  <p className="text-lg">{product.price}</p>
-                  <div className="flex justify-center items-center mt-2">
-                    <span className="text-yellow-500 mr-2">{'★'.repeat(Math.floor(product.rating))}</span>
-                    <span className="text-white ml-2">({product.rating.toFixed(1)})</span>
+      <div className="container mx-auto">
+        <h2 className="text-4xl font-bold mb-8 text-center">B E S T S E L L E R S</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="border rounded-lg p-4 shadow-lg overflow-hidden cursor-pointer relative"
+            >
+              <Link to={product.path}> {/* Wrap with Link component */}
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-48 object-cover mb-4"
+                  onClick={() => handleProductClick(product)}
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <div>
+                    <p className="text-lg font-bold mb-2">{product.name}</p>
+                    <p className="text-lg">{product.price}</p>
+                    <div className="flex justify-center items-center mt-2">
+                      <span className="text-yellow-500 mr-2">{'★'.repeat(Math.floor(product.rating))}</span>
+                      <span className="text-white ml-2">({product.rating.toFixed(1)})</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+              </Link>
+            </div>
+          ))}
+        </div>
 
-      <div className="flex justify-center mt-6">
-        <Button
-          variant="contained" // Assuming 'contained' is a valid variant for Shadcn UI Button
-          color="primary" // Adjust the color as needed
-          onClick={() => { /* Handle "See More" action here */ }}
-        >
-          See More
-        </Button>
+        <div className="flex justify-center mt-6">
+          <Button
+            variant="contained" // Assuming 'contained' is a valid variant for Shadcn UI Button
+            color="primary" // Adjust the color as needed
+            onClick={() => { /* Handle "See More" action here */ }}
+          >
+            See More
+          </Button>
+        </div>
       </div>
     </section>
   );

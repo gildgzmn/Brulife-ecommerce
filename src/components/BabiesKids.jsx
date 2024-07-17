@@ -120,7 +120,7 @@ const BabiesKids = () => {
         <Link to="/newborn" style={styles.link}>
           <Button style={styles.shadcnButton}>Newborn</Button>
         </Link>
-        <Link to="/letters" style={styles.link}>
+        <Link to="/letter" style={styles.link}>
           <Button style={styles.shadcnButton}>Letters</Button>
         </Link>
         <Link to="/toddler" style={styles.link}>

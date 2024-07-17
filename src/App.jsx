@@ -24,8 +24,15 @@ import BreakFastPage from './pages/BreakFastPage';
 import LunchPage from './pages/LunchPage';
 import DinnerPage from './pages/DinnerPage';
 import BeveragesPage from './pages/BeveragesPage';
-
+import CoffeePage from './pages/CoffeePage';
+import AlcoholPage from './pages/AlcoholPage';
+import JuicePage from './pages/JuicePage';
+import ShakePage from './pages/ShakePage';
 import BabiesKidsPage from './pages/BabiesKidsPage';
+import NewbornPage from './pages/NewbornPage';
+import LetterPage from './pages/LetterPage';
+import ToddlerPage from './pages/ToddlerPage';
+import PreSchoolPage from './pages/PreSchoolPage';
 import BooksPage from './pages/BooksPage';
 import PetCarePage from './pages/PetCarePage';
 
@@ -82,8 +89,17 @@ export default function App() {
           <Route path="/dinner" element={<DinnerPage />} />
 
           <Route path="/beverages" element={<BeveragesPage />} />
+          <Route path="/coffee" element={<CoffeePage />} />
+          <Route path="/alcohol" element={<AlcoholPage />} />
+          <Route path="/juice" element={<JuicePage />} />
+          <Route path="/shake" element={<ShakePage />} />
 
           <Route path="/babies-kids" element={<BabiesKidsPage />} />
+          <Route path="/newborn" element={<NewbornPage />} />
+          <Route path="/letter" element={<LetterPage />} />
+          <Route path="/toddler" element={<ToddlerPage />} />
+          <Route path="/pre-school" element={<PreSchoolPage />} />
+
           <Route path="/books" element={<BooksPage />} />
           <Route path="/pet-care" element={<PetCarePage />} />
 

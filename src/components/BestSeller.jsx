@@ -77,6 +77,7 @@ const BestSeller = () => {
             variant="contained" // Assuming 'contained' is a valid variant for Shadcn UI Button
             color="primary" // Adjust the color as needed
             onClick={() => { /* Handle "See More" action here */ }}
+            
           >
             See More
           </Button>

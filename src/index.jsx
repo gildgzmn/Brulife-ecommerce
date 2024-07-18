@@ -36,6 +36,14 @@ import LetterPage from './pages/LetterPage';
 import ToddlerPage from './pages/ToddlerPage';
 import PreSchool from './pages/PreSchool';
 import BooksPage from './pages/BooksPage';
+import RomancePage from './pages/RomancePage';
+import ActionPage from './pages/ActionPage';
+import NonFictionPage from './pages/NonFictionPage';
+import YoungAdultPage from './pages/YoungAdultPage';
+import CrimePage from './pages/CrimePage';
+import AudioBooksPage from './pages/AudioBooksPage';
+import MysteryPage from './pages/MysteryPage';
+import HorrorPage from './pages/HorrorPage';
 import PetCarePage from './pages/PetCarePage';
 
 import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
@@ -102,6 +110,15 @@ ReactDOM.render(
         <Route path="/pre-school" element={<PreSchool />} />
 
         <Route path="/books" element={<BooksPage />} />
+        <Route path="/romance" element={<RomancePage />} />
+        <Route path="/action" element={<ActionPage />} />
+        <Route path="/non-fiction" element={<NonFictionPage />} />
+        <Route path="/young-adult" element={<YoungAdultPage />} />
+        <Route path="/crime" element={<CrimePage />} />
+        <Route path="/audio-books" element={<AudioBooksPage />} />
+        <Route path="/mystery" element={<MysteryPage />} />
+        <Route path="/horror" element={<HorrorPage />} />
+        
         <Route path="/pet-care" element={<PetCarePage />} />
 
         <Route path="/perfume1" element={<Perfume1 />} />

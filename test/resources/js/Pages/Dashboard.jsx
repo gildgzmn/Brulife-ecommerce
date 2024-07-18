@@ -4,12 +4,12 @@ import { Head } from "@inertiajs/react";
 
 export default function Dashboard({ auth, products }) {
 
-    useEffect(() => {
-        // Fetch the products data from the server
-        fetch("/products")
-            .then((response) => response.json())
-            .then((data) => products(data));
-    }, []);
+    // useEffect(() => {
+    //     // Fetch the products data from the server
+    //     fetch("/products")
+    //         .then((response) => response.json())
+    //         .then((data) => products(data));
+    // }, []);
     return (
         <AuthenticatedLayout
             user={auth.user}

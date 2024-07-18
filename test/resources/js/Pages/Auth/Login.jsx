@@ -1,21 +1,29 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Login({ status, canResetPassword, token }) {
+import axios from 'axios';
+
+export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
         remember: false,
-        token: token,
+        _token: '', // Initialize the CSRF token here
     });
 
     useEffect(() => {
+        // Fetch the CSRF token from the backend
+        axios.get('/sanctum/csrf-cookie').then(() => {
+            axios.get('/token').then(response => {
+                setData('_token', response.data); // Set the CSRF token in the form data
+            });
+        });
+
         return () => {
             reset('password');
         };

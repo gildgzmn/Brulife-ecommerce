@@ -11,7 +11,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Request;
 
+Route::get('/token', function (Request $request) {
+    return csrf_token();
+});
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         //return response()->json([
@@ -22,8 +26,9 @@ Route::get('/', function () {
     ]);
 });
 //test new login and register (w/o auth?)
-Route::get('/newlogin', [LoginController::class, 'login']);
+Route::post('/newlogin', [LoginController::class, 'login']);
 Route::get('/newregister', [RegisterController::class,'register']);
+Route::get('/newlogout', [LoginController::class, 'logout']);
 
 
 Route::get('/products', [ProductController::class, 'index']);
@@ -37,12 +42,12 @@ Route::get('/order', [OrderController::class, 'createOrder']);
 
 
 //unessessary ata
-Route::get('/dashboard', function () {
-    $products = Products::all();
-    return response()->json([
-        'products' => $products
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     $products = Products::all();
+//     return response()->json([
+//         'products' => $products
+//     ]);
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

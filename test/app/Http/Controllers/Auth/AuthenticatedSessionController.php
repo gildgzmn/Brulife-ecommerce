@@ -18,25 +18,24 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        // return Inertia::render('Auth/Login', [
-            return response()->json([
-
-            'message' => 'This is a JSON response from the create method in AuthenticatedSessionController.',
+        $TOKEN = csrf_token();
+        return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            '__token' => $TOKEN,
         ]);
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect('/products');
     }
 
     /**
@@ -50,6 +49,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

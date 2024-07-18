@@ -17,12 +17,20 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Login successful']);
+        $credentials = $this->loginService->validateLogin($request->all());
+
+        if ($credentials) {
+            return response()->json(['message' => 'Login successful', csrf_token()], 200);
+
         }
 
         return response()->json(['message' => 'Login failed'], 401);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return response()->json(['message' => 'User Logged Out'], 200);
     }
 }

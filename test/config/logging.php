@@ -1,4 +1,4 @@
-<?php
+S<?php
 
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
@@ -125,6 +125,11 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        'console' => [
+        'driver' => 'errorlog',
+        'level' => 'debug',
         ],
 
     ],

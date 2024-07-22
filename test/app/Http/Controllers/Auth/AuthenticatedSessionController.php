@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Symfony\Component\HttpKernel\Log\Logger;
 
 
 class AuthenticatedSessionController extends Controller
@@ -31,6 +32,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        $TOKEN = csrf_token();
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -51,4 +53,6 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/login');
     }
+
+
 }

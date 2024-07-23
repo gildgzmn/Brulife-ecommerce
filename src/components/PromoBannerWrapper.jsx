@@ -4,7 +4,7 @@ import PromoBanner from './PromoBanner';
 
 const PromoBannerWrapper = () => {
   const location = useLocation();
-  const excludedPaths = ['/login', '/accountsec', '/faq', '/orderhistory', '/vouchers', '/register', '/about', '/allproducts', '/cart'];
+  const excludedPaths = ['/login', '/accountsec', '/faq', '/orderhistory', '/vouchers', '/register', '/about', '/allproducts', '/cart', '/checkout'];
 
   // Check if the current path is not in the excluded paths
   if (!excludedPaths.includes(location.pathname)) {

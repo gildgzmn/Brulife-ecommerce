@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button"; 
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 
 const AccountSec = () => {
-  const [editDialog, setEditDialog] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [editType, setEditType] = useState("");
   const [formData, setFormData] = useState({
     name: "Jessica D. Unuisi",
@@ -23,7 +18,7 @@ const AccountSec = () => {
 
   const handleEditClick = (type) => {
     setEditType(type);
-    setEditDialog(true);
+    setEditDialogOpen(true);
   };
 
   const handleInputChange = (e) => {
@@ -35,68 +30,56 @@ const AccountSec = () => {
   };
 
   const handleSave = () => {
-    setEditDialog(false);
+    setEditDialogOpen(false);
   };
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold ml-56 mt-12 mb-8" style={{ fontSize: '2.15rem' }}>My Account</h1>
 
-      <Card className="mb-4 max-w-4xl mx-auto p-4">
-        <CardHeader>
+      <div className="flex flex-col max-w-4xl mx-auto mb-8">
+        <div className="mb-4">
           <div className="flex justify-between items-center">
-            <CardTitle>Personal Details</CardTitle>
+            <h2 className="text-xl font-bold">Personal Details</h2>
             <Button onClick={() => handleEditClick("personal")}>Edit</Button>
           </div>
-        </CardHeader>
-        <CardContent>
           <div className="flex flex-col space-y-2 mb-2">
             <span>Name: {formData.name}</span>
             <span>Email: {formData.email}</span>
             <span>Password: {formData.password}</span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
 
-      <Card className="mb-4 max-w-4xl mx-auto p-4">
-        <CardHeader>
+        <div className="mb-4">
           <div className="flex justify-between items-center">
-            <CardTitle>Contact and Address Information</CardTitle>
+            <h2 className="text-xl font-bold">Contact and Address Information</h2>
             <Button onClick={() => handleEditClick("contact")}>Edit</Button>
           </div>
-        </CardHeader>
-        <CardContent>
           <div className="flex flex-col space-y-2 mb-2">
             <span>Name: {formData.name}</span>
             <span>Address: {formData.address}</span>
             <span>Mobile Number: {formData.mobileNumber}</span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card className="max-w-4xl mx-auto mb-8 p-4">
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle>E-wallet and Phone Number</CardTitle>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="mb-4">
-            <label className="block mb-1">E-wallet ID</label>
-            <Input name="ewallet" placeholder="E-wallet ID" value={formData.ewallet} onChange={handleInputChange} />
-          </div>
-          <div className="mb-4">
-            <label className="block mb-1">Phone Number</label>
-            <Input name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} />
-          </div>
-          <Button>Add E-wallet</Button>
-        </CardContent>
-      </Card>
+      <div className="max-w-4xl mx-auto mb-8 p-4">
+        <h2 className="text-xl font-bold mb-4">E-wallet and Phone Number</h2>
+        <div className="mb-4">
+          <label className="block mb-1">E-wallet ID</label>
+          <Input name="ewallet" placeholder="E-wallet ID" value={formData.ewallet} onChange={handleInputChange} />
+        </div>
+        <div className="mb-4">
+          <label className="block mb-1">Phone Number</label>
+          <Input name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} />
+        </div>
+        <Button>Add E-wallet</Button>
+      </div>
 
-      {editDialog && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-8 rounded-lg max-w-md mx-auto">
-            <h2 className="text-xl font-bold mb-4">Edit {editType === "personal" ? "Personal Details" : "Contact and Address Information"}</h2>
+      {editDialogOpen && (
+        <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+          <DialogContent>
+            <DialogTitle>Edit {editType === "personal" ? "Personal Details" : "Contact and Address Information"}</DialogTitle>
             {editType === "personal" ? (
               <div>
                 <div className="mb-4">
@@ -128,12 +111,12 @@ const AccountSec = () => {
                 </div>
               </div>
             )}
-            <div className="flex justify-end space-x-4">
-              <Button onClick={() => setEditDialog(false)}>Cancel</Button>
+            <DialogFooter>
+              <Button onClick={() => setEditDialogOpen(false)}>Cancel</Button>
               <Button onClick={handleSave}>Save</Button>
-            </div>
-          </div>
-        </div>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       )}
     </div>
   );

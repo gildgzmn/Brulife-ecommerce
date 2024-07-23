@@ -9,6 +9,7 @@ import WomenPage from './pages/WomenPage';
 import SalePage from './pages/SalePage';
 import AboutPage from './pages/AboutPage';
 import CartPage from './pages/CartPage';
+import CheckOutPage from './pages/CheckOutPage';
 import AccountSecPage from './pages/AccountSecPage';
 import FaqPage from './pages/FaqPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
@@ -73,6 +74,7 @@ ReactDOM.render(
         <Route path="/sale" element={<SalePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckOutPage />} />
         <Route path="/accountsec" element={<AccountSecPage />} />
         <Route path="/faq" element={<FaqPage />} />
         <Route path="/orderhistory" element={<OrderHistoryPage />} />

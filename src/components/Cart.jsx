@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Cart = () => {
@@ -9,6 +10,7 @@ const Cart = () => {
   ]);
   const [allChecked, setAllChecked] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newSubtotal = items.reduce((sum, item) => {
@@ -39,6 +41,10 @@ const Cart = () => {
     setItems(items.map(item => 
       item.id === id && item.quantity > 0 ? { ...item, quantity: item.quantity - 1 } : item
     ));
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout');
   };
 
   return (
@@ -78,7 +84,7 @@ const Cart = () => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px', marginLeft: '32px', marginBottom: '20px', fontSize: '18px' }}>
         <span>Subtotal: ₱ {subtotal.toFixed(2)}</span>
-        <Button style={{ backgroundColor: 'black', color: 'white' }}>Check Out</Button>
+        <Button style={{ backgroundColor: 'black', color: 'white' }} onClick={handleCheckout}>Check Out</Button>
       </div>
     </div>
   );

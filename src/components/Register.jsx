@@ -57,8 +57,8 @@ const Register = () => {
         </div>
 
         {/* Fourth row */}
-        <div style={{ gridColumn: 'span 6' }}>
-          <label>
+        <div style={{ gridColumn: 'span 6', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <label style={{ width: '50%' }}>
             Confirm Password*
             <Input type="password" required style={{ marginBottom: '20px', width: '100%', backgroundColor: '#f3f4f6' }} />
           </label>

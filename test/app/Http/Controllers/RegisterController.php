@@ -20,7 +20,16 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $data = $request->only("first_name","last_name","email","contact_number","password","password_confirmation");
+        $data = $request->only(
+            "first_name",
+            "middle_initial",
+            "last_name",
+            "email",
+            "username",
+            "contact_number",
+            "password",
+            "password_confirmation"
+        );
         $result = $this->registrationService->validateAndCreateUser($data);
 
         if($result['success']){

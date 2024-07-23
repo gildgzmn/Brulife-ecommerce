@@ -5,7 +5,7 @@ import Books from '../components/Books';
 
 
 
-export default function PerfumePage() {
+export default function BooksPage() {
   return (
     <>
       <Navbar />

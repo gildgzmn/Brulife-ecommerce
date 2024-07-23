@@ -5,7 +5,7 @@ import Beverages from '../components/Beverages';
 
 
 
-export default function PerfumePage() {
+export default function BeveragesPage() {
   return (
     <>
       <Navbar />

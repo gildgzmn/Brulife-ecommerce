@@ -5,7 +5,7 @@ import PetCare from '../components/PetCare';
 
 
 
-export default function PerfumePage() {
+export default function PetCarePage() {
   return (
     <>
       <Navbar />

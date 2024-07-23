@@ -5,7 +5,7 @@ import Gadgets from '../components/Gadgets';
 
 
 
-export default function PerfumePage() {
+export default function GadgetsPage() {
   return (
     <>
       <Navbar />

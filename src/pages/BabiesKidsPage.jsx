@@ -5,7 +5,7 @@ import BabiesKids from '../components/BabiesKids';
 
 
 
-export default function PerfumePage() {
+export default function BabiesKidsPage() {
   return (
     <>
       <Navbar />

@@ -5,7 +5,7 @@ import Chocolate from '../components/Chocolate';
 
 
 
-export default function PerfumePage() {
+export default function ChocolatePage() {
   return (
     <>
       <Navbar />

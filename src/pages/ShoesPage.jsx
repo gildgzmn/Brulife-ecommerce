@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 
 
-export default function ShopPage() {
+export default function ShoesPage() {
   return (
     <>
       <Navbar />

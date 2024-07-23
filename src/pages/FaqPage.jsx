@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Faq from '../components/Faq';
 
-export default function AboutPage() {
+export default function FaqPage() {
     return (
       <>
         <Navbar />

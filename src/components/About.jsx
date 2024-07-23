@@ -6,19 +6,25 @@ const About = () => {
       <section className="mb-14">
         <h1 className="text-4xl font-bold mt-16 mb-8 ml-48" style={{ fontSize: '2.95rem' }}>ABOUT</h1>
         <p className="text-lg leading-relaxed mx-48" style={{ fontSize: '1.35rem' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum tempor quam, non ornare lorem sollicitudin vitae. Pellentesque nec dolor eget mauris efficitur hendrerit. Sed ac pharetra nunc, et vestibulum odio. Morbi hendrerit pharetra ante convallis cursus. Sed ultricies ligula a dictum finibus. Nulla ullamcorper faucibus justo, non placerat ligula.
+        Right Personal and Homecare Trading is a newly established Trading Company in June 25, 2024 by the Founder & CEO of the Company, Ms. Joan Dimla Villanueva. Started with the idea to create high-end, luxury perfumes and colognes crafted with exotic ingredients sourced from around the world. Our products are customized to fit your individual style and personality, providing a unique and lasting scent.
         </p>
       </section>
       <section className="mb-14">
         <h1 className="text-center text-4xl font-bold mb-12" style={{ fontSize: '2.55rem' }}>MISSION</h1>
         <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Maecenas efficitur lobortis dui, sit amet hendrerit mauris rhoncus sed. Morbi eu quam pellentesque lorem aliquam tempor sed a mi. Vestibulum blandit pulvinar augue, varius dapibus nulla dignissim euismod. Proin convallis elit a mollis feugiat. Quisque viverra risus at semper scelerisque. Duis egestas tellus sed porta imperdiet. Aenean ante felis, ultricies vel ex vel, consectetur aliquam tortor. Vestibulum pharetra libero nulla, eget dignissim erat lobortis sed. Quisque nec ipsum consequat, vulputate diam eu, egestas purus. Quisque fermentum vulputate tempor. Quisque id neque diam. Aliquam lobortis tortor nec sagittis suscipit. Pellentesque non risus diam. Mauris malesuada neque non arcu malesuada, et placerat eros hendrerit. Nullam bibendum consequat ex, nec pulvinar mauris rhoncus ex.
+        “Our mission at Right Personal and Homecare Products Trading is to craft unique and luxurious fragrances that captivate the senses and evoke cherished memories, using the power of scent and only the finest ingredients offering a diverse range of perfumes that reflects sophistication for every individual's personal style and preferences.”
         </p>
       </section>
       <section>
         <h1 className="text-center text-4xl font-bold mb-10" style={{ fontSize: '2.55rem' }}>VISION</h1>
         <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
-          Nullam sed sodales nunc. Duis elit lorem, ultricies et orci in, tristique iaculis quam. Praesent tristique est arcu, a luctus nisl laoreet placerat. Nulla maximus lacus magna, eu posuere lorem interdum et. Nulla egestas, ante ut iaculis placerat, massa orci vestibulum sapien, quis vestibulum ex enim non lacus. Ut facilisis lacus sed consectetur ullamcorper. Curabitur semper orci eget volutpat vulputate. Mauris mattis massa ligula, id iaculis suscipit. Quisque lorem erat, lobortis sit amet egestas nec, molestie posuere felis. Integer id malesuada est. Aliquam consequat ante eget nisl volutpat. Vestibulum nec justo enim, ullamcorper tincidunt elit.
+        “To become a globally recognized brand known for our innovative, be the leading innovator in the fragrance industry, known for our commitment to quality, creativity, and sustainability, while enriching lives with our signature scents.”
+        </p>
+      </section>
+      <section>
+        <h1 className="text-center text-4xl font-bold mb-10 mt-10" style={{ fontSize: '2.55rem' }}>GOALS</h1>
+        <p className="text-lg leading-relaxed mx-56" style={{ fontSize: '1.35rem' }}>
+        Our goal is to create a community of customers who are passionate about perfume and continue to purchase our products as their tastes evolve.
         </p>
       </section>
     </div>

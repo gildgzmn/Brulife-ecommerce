@@ -5,7 +5,7 @@ import Snacks from '../components/Snacks';
 
 
 
-export default function PerfumePage() {
+export default function SnacksPage() {
   return (
     <>
       <Navbar />

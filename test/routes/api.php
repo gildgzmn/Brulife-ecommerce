@@ -21,9 +21,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/', function () {
-    return response()->json(['message' => 'Hello World']);
-});
 
 Route::post('/newlogin', [LoginController::class, 'login']);
 Route::post('/newregister', [RegisterController::class, 'register']);
@@ -31,6 +28,7 @@ Route::post('/newlogout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth:sanctum');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth:sanctum');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware('auth:sanctum');
+
 Route::post('/products', [ProductController::class, 'index']);
 Route::post('/products/{id}', [ProductController::class, 'show']);
 Route::post('/products/{id}/add', [ProductController::class, 'addToCart'])->middleware('auth:sanctum');

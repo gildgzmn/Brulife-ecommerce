@@ -13,31 +13,31 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Request;
 
-Route::get('/token', function (Request $request) {
-    return csrf_token();
-});
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        //return response()->json([
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/token', function (Request $request) {
+//     return csrf_token();
+// });
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         //return response()->json([
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 //test new login and register (w/o auth?)
-Route::post('/newlogin', [LoginController::class, 'login']);
-Route::get('/newregister', [RegisterController::class,'register']);
-Route::get('/newlogout', [LoginController::class, 'logout']);
+// Route::post('/newlogin', [LoginController::class, 'login']);
+// Route::get('/newregister', [RegisterController::class,'register']);
+// Route::get('/newlogout', [LoginController::class, 'logout']);
 
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::get('/products/{id}/add', [ProductController::class, 'addToCart']);
+// Route::get('/products', [ProductController::class, 'index']);
+// Route::get('/products/{id}', [ProductController::class, 'show']);
+// Route::get('/products/{id}/add', [ProductController::class, 'addToCart']);
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
-Route::get('/order', [OrderController::class, 'createOrder']);
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::get('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
+// Route::get('/order', [OrderController::class, 'createOrder']);
 
 
 
@@ -50,9 +50,9 @@ Route::get('/order', [OrderController::class, 'createOrder']);
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
     // Route::post('/cart', [CartController::class, 'add'])->name('cart.add');

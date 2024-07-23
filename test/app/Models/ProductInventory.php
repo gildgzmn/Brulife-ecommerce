@@ -15,6 +15,6 @@ class ProductInventory extends Model
 
     public function products()
     {
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Products::class, 'inventory_id');
     }
 }

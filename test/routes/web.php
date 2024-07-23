@@ -13,18 +13,18 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Request;
 
-// Route::get('/token', function (Request $request) {
-//     return csrf_token();
-// });
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         //return response()->json([
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::get('/token', function (Request $request) {
+    return csrf_token();
+});
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        //return response()->json([
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 //test new login and register (w/o auth?)
 // Route::post('/newlogin', [LoginController::class, 'login']);
 // Route::get('/newregister', [RegisterController::class,'register']);

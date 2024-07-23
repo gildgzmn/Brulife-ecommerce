@@ -29,8 +29,8 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth:sanctum');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy')->middleware('auth:sanctum');
 
-Route::post('/products', [ProductController::class, 'index']);
-Route::post('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::post('/products/{id}/add', [ProductController::class, 'addToCart'])->middleware('auth:sanctum');
 Route::post('/cart', [CartController::class, 'index'])->middleware('auth:sanctum');
 Route::post('/order', [OrderController::class, 'createOrder'])->middleware('auth:sanctum');

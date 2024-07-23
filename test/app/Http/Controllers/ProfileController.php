@@ -7,8 +7,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-
 class ProfileController extends Controller
 {
     /**
@@ -25,16 +23,25 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validatedData = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user->fill($validatedData);
+
+        if ($user->isDirty()) {
+            if ($user->isDirty('email')) {
+                $user->email_verified_at = null;
+            }
+
+            $user->save();
+
+            return response()->json([
+                'message' => 'Profile updated successfully',
+            ]);
         }
 
-        $request->user()->save();
-
         return response()->json([
-            'message' => 'Profile updated successfully',
+            'message' => 'No changes were made to the profile',
         ]);
     }
 

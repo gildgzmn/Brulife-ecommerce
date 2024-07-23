@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import PromoBannerWrapper from './components/PromoBannerWrapper';
 import AllProducts from './pages/AllProductsPage';
 import HomePage from './pages/HomePage';
@@ -8,6 +7,7 @@ import ShopPage from './pages/ShopPage';
 import WomenPage from './pages/WomenPage';
 import SalePage from './pages/SalePage';
 import AboutPage from './pages/AboutPage';
+import CartPage from './pages/CartPage';
 import AccountSecPage from './pages/AccountSecPage';
 import VouchersPage from './pages/VouchersPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
@@ -70,6 +70,7 @@ export default function App() {
           <Route path="/women" element={<WomenPage />} />
           <Route path="/sale" element={<SalePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/accountsec" element={<AccountSecPage />} />
           <Route path="/vouchers" element={<VouchersPage />} />
           <Route path="/orderhistory" element={<OrderHistoryPage />} />

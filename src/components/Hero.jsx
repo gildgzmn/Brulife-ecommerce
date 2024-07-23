@@ -6,12 +6,11 @@ import HeroImage2 from '../assets/Hero2.png';
 import HeroImage3 from '../assets/Hero3.png';
 import HeroImage4 from '../assets/Hero4.png';
 import HeroImage5 from '../assets/Hero5.png';
-import HeroImage6 from '../assets/Hero6.png';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
-  const heroImages = [HeroImage1, HeroImage2, HeroImage3, HeroImage4, HeroImage5, HeroImage6];
+  const heroImages = [HeroImage1, HeroImage2, HeroImage3, HeroImage4, HeroImage5];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div
         className="hero bg-cover bg-center relative"
         style={{
@@ -37,7 +36,7 @@ const Hero = () => {
           backgroundPosition: 'center',
           width: '100%',
           height: 'auto',
-          aspectRatio: '1920 / 1080',
+          aspectRatio: '16 / 9', // Maintain a responsive aspect ratio
         }}
       >
         <div className="container mx-auto h-full flex items-center justify-center">

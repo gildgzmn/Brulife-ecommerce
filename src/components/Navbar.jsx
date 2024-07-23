@@ -7,6 +7,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Separator } from "@/components/ui/separator";
 import { useNavigate } from "react-router-dom";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import Cart from "@/components/Cart"; // Ensure this path is correct
 
 export default function TopNavigation({ modifier = "" }) {
   const navigate = useNavigate();
@@ -104,10 +105,15 @@ export default function TopNavigation({ modifier = "" }) {
           </div>
           <Popover>
             <PopoverTrigger>
-              <Button variant="ghost">
-                <MdShoppingBag className="h-6 w-6" />
-              </Button>
+              <div className="relative flex items-center justify-center">
+                <Button variant="ghost">
+                  <MdShoppingBag className="h-6 w-6" />
+                </Button>
+              </div>
             </PopoverTrigger>
+            <PopoverContent>
+              <Cart />
+            </PopoverContent>
           </Popover>
           <Button
             variant="ghost"
@@ -199,8 +205,8 @@ function HoverDropDown({ name, sections, onClick, modifier = "" }) {
             ))}
           </div>
           <Separator orientation="vertical" />
-          <div className="flex flex-col flex-1">
-            <h1 className="text-3xl pb-4">{hoveredName.name}</h1>
+          <div className="flex flex-col gap-2 flex-1">
+            <h1 className="text-3xl">{hoveredName.name}</h1>
             <p>{hoveredName.info}</p>
           </div>
         </div>

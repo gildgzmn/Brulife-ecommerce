@@ -44,8 +44,8 @@ const Register = () => {
         </div>
         <div style={{ gridColumn: 'span 1' }}>
           <label>
-            Birthday*
-            <Input type="date" required style={{ marginBottom: '20px', width: '100%' }} />
+            Email*
+            <Input type="email" placeholder="Email" required style={{ marginBottom: '20px', width: '100%' }} />
           </label>
         </div>
 

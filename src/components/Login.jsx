@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Assuming you're using react-router-dom
+import image from '../assets/LoginBackground.png';
 
 const Login = ({ canResetPassword, route }) => {
   const [data, setData] = useState({ email: '', password: '', remember: false });
@@ -19,8 +20,11 @@ const Login = ({ canResetPassword, route }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen mt-48 mb-48 bg-white">
-      <div className="bg-gray-300 p-8 rounded shadow-md w-full max-w-md">
+    <div
+      className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${image})` }}
+    >
+      <div className="bg-white p-10 rounded shadow-md w-full max-w-lg mt-12 mb-12"> {/* Changed background to white */}
         <h1 className="text-3xl font-bold mb-8 text-center" style={{ fontSize: '4.05rem' }}>Log in</h1>
         <p className="mb-6 text-center">Enter your email address and password to login</p>
         
@@ -32,7 +36,7 @@ const Login = ({ canResetPassword, route }) => {
               type="email"
               name="email"
               value={data.email}
-              className="mt-1 block w-full"
+              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700" // Gray background and text color
               autoComplete="username"
               isFocused={true}
               onChange={(e) => handleInputChange('email', e.target.value)}
@@ -47,7 +51,7 @@ const Login = ({ canResetPassword, route }) => {
               type="password"
               name="password"
               value={data.password}
-              className="mt-1 block w-full"
+              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700" // Gray background and text color
               autoComplete="current-password"
               onChange={(e) => handleInputChange('password', e.target.value)}
             />
@@ -65,17 +69,17 @@ const Login = ({ canResetPassword, route }) => {
             </label>
           </div>
 
-          <div className="flex items-center justify-end mt-4">
+          <div className="flex flex-col items-center justify-center mt-4">
             {canResetPassword && (
               <Link
-                href={route('password.request')}
-                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                to={route('password.request')}
+                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
               >
                 Forgot your password?
               </Link>
             )}
 
-            <PrimaryButton className="ms-4" disabled={processing}>
+            <PrimaryButton className="w-full text-center" disabled={processing}>
               Log in
             </PrimaryButton>
           </div>
@@ -88,7 +92,7 @@ const Login = ({ canResetPassword, route }) => {
         </div>
 
         <button className="w-full border p-3 rounded flex items-center justify-center">
-          <img src="/path/to/google-logo.png" alt="Google Logo" className="w-6 h-6 mr-2" />
+          <img src="../src/assets/google.png" alt="Google Logo" className="w-6 h-6 mr-2" />
           Google
         </button>
 
@@ -143,7 +147,7 @@ const Checkbox = ({ name, checked, onChange }) => (
 const PrimaryButton = ({ className, disabled, children }) => (
   <button
     type="submit"
-    className={`inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${className}`}
+    className={`inline-flex items-center justify-center px-4 py-2 bg-black border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${className}`}
     disabled={disabled}
   >
     {children}

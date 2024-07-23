@@ -11,7 +11,6 @@ const FAQSection = () => {
         <AccordionItem value="order">
           <AccordionTrigger>
             <div className="flex items-center">
-              <FaChevronRight className="mr-2" />
               How to Place an Order
             </div>
           </AccordionTrigger>
@@ -29,7 +28,6 @@ const FAQSection = () => {
         <AccordionItem value="cart">
           <AccordionTrigger>
             <div className="flex items-center">
-              <FaChevronRight className="mr-2" />
               Shopping Cart
             </div>
           </AccordionTrigger>

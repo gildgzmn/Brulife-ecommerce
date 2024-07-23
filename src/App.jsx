@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter,Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import PromoBannerWrapper from './components/PromoBannerWrapper';
 import AllProducts from './pages/AllProductsPage';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
@@ -43,25 +45,16 @@ import AudioBooksPage from './pages/AudioBooksPage';
 import MysteryPage from './pages/MysteryPage';
 import HorrorPage from './pages/HorrorPage';
 import PetCarePage from './pages/PetCarePage';
-
 import Perfume1 from './pages/proddetpage/Perfume1ProdPage';
-
 import Chocolate1 from './pages/proddetpage/Chocolate1ProdPage';
-
 import Shoes1 from './pages/proddetpage/Shoes1ProdPage';
 import Shoes2 from './pages/proddetpage/Shoes2ProdPage';
-
 import Beverages1 from './pages/proddetpage/Beverages1ProdPage';
-
 import Snacks1 from './pages/proddetpage/Snacks1ProdPage';
-
 import Gadgets1 from './pages/proddetpage/Gadgets1ProdPage';
 import Gadgets2 from './pages/proddetpage/Gadgets2ProdPage';
-
 import Books1 from './pages/proddetpage/Books1ProdPage';
-
 import PetCare1 from './pages/proddetpage/PetCare1ProdPage';
-
 import Kids1 from './pages/proddetpage/Kids1ProdPage';
 import Kids2 from './pages/proddetpage/Kids2ProdPage';
 
@@ -69,6 +62,7 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
+        <PromoBannerWrapper />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/allproducts" element={<AllProducts />} />
@@ -85,29 +79,24 @@ export default function App() {
           <Route path="/perfume" element={<PerfumePage />} />
           <Route path="/chocolate" element={<ChocolatePage />} />
           <Route path="/gadgets" element={<GadgetsPage />} />
-
           <Route path="/shoes" element={<ShoesPage />} />
           <Route path="/womenshoes" element={<WomenShoesPage />} />
           <Route path="/menshoes" element={<MenShoesPage />} />
           <Route path="/kidsshoes" element={<KidsShoesPage />} />
-
           <Route path="/snacks" element={<SnacksPage />} />
           <Route path="/breakfast" element={<BreakFastPage />} />
           <Route path="/lunch" element={<LunchPage />} />
           <Route path="/dinner" element={<DinnerPage />} />
-
           <Route path="/beverages" element={<BeveragesPage />} />
           <Route path="/coffee" element={<CoffeePage />} />
           <Route path="/alcohol" element={<AlcoholPage />} />
           <Route path="/juice" element={<JuicePage />} />
           <Route path="/shake" element={<ShakePage />} />
-
           <Route path="/babies-kids" element={<BabiesKidsPage />} />
           <Route path="/newborn" element={<NewbornPage />} />
           <Route path="/letter" element={<LetterPage />} />
           <Route path="/toddler" element={<ToddlerPage />} />
           <Route path="/pre-school" element={<PreSchoolPage />} />
-
           <Route path="/books" element={<BooksPage />} />
           <Route path="/romance" element={<RomancePage />} />
           <Route path="/action" element={<ActionPage />} />
@@ -117,33 +106,21 @@ export default function App() {
           <Route path="/audio-books" element={<AudioBooksPage />} />
           <Route path="/mystery" element={<MysteryPage />} />
           <Route path="/horror" element={<HorrorPage />} />
-          
           <Route path="/pet-care" element={<PetCarePage />} />
-
           <Route path="/perfume1" element={<Perfume1 />} />
-
           <Route path="/chocolate1" element={<Chocolate1 />} />
-
           <Route path="/shoes1" element={<Shoes1 />} />
           <Route path="/shoes2" element={<Shoes2 />} />
-
           <Route path="/beverages1" element={<Beverages1 />} />
-
           <Route path="/snacks1" element={<Snacks1 />} />
-
           <Route path="/gadgets1" element={<Gadgets1 />} />
           <Route path="/gadgets2" element={<Gadgets2 />} />
-
           <Route path="/books1" element={<Books1 />} />
-
           <Route path="/petcare1" element={<PetCare1 />} />
-
           <Route path="/kids1" element={<Kids1 />} />
           <Route path="/kids2" element={<Kids2 />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
-};
-
-
+}

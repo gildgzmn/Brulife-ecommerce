@@ -17,6 +17,8 @@ const AccountSec = () => {
     password: "********",
     address: "2982 Unknownat Parking, New Brunswick, Malabu, SWZ 20001",
     mobileNumber: "+1 (245) 455-6683",
+    ewallet: "",  // New field
+    phoneNumber: ""  // New field
   });
 
   const handleEditClick = (type) => {
@@ -75,25 +77,19 @@ const AccountSec = () => {
       <Card className="max-w-4xl mx-auto mb-8 p-4">
         <CardHeader>
           <div className="flex justify-between items-center">
-            <CardTitle>Bank and Cards</CardTitle>
+            <CardTitle>E-wallet and Phone Number</CardTitle>
           </div>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
-            <label className="block mb-1">Card Number</label>
-            <Input placeholder="Card Number" />
+            <label className="block mb-1">E-wallet ID</label>
+            <Input name="ewallet" placeholder="E-wallet ID" value={formData.ewallet} onChange={handleInputChange} />
           </div>
-          <div className="flex space-x-4 mb-8">
-            <div>
-              <label className="block mb-1">Expiry Date (MM/YY)</label>
-              <Input placeholder="MM/YY" />
-            </div>
-            <div>
-              <label className="block mb-1">CVV</label>
-              <Input placeholder="CVV" />
-            </div>
+          <div className="mb-4">
+            <label className="block mb-1">Phone Number</label>
+            <Input name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} />
           </div>
-          <Button>Add New Card</Button>
+          <Button>Add E-wallet</Button>
         </CardContent>
       </Card>
 

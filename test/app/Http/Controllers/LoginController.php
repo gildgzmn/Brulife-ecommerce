@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\LoginService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 
 class LoginController extends Controller
@@ -23,12 +24,21 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        //return response()->json(['message' => 'Login successful'], 200);
+        // Validate request
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Validation error', 'errors' => $validator->errors()], 422);
+        }
+
         try {
             $user = User::where('email', $request->input('email'))->first();
 
             if (!$user) {
-                return response()->json(['message' => 'User not found!!!'], 404);
+                return response()->json(['message' => 'User not found!'], 404);
             }
 
             if (Hash::check($request->input('password'), $user->password)) {
@@ -47,10 +57,16 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        //add revoke token
-        Auth::logout();
-        return response()->json(['message' => 'User Logged Out'], 200);
+        try {
+            $user = $request->user();
+            $user->tokens()->delete();  // Revoke all tokens for the user
+            Auth::logout();
+            return response()->json(['message' => 'User logged out successfully'], 200);
+        } catch (\Exception $e) {
+            $this->logger->error('Logout error: ' . $e->getMessage());
+            return response()->json(['message' => 'Logout failed. Please try again later.'], 500);
+        }
     }
 }

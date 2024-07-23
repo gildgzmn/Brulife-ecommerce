@@ -56,7 +56,7 @@ const AccountSec = () => {
             <Button onClick={() => handleEditClick("contact")}>Edit</Button>
           </div>
           <div className="flex flex-col space-y-2 mb-2">
-            <span>Name: {formData.name}</span>
+            <span>UserName: {formData.name}</span>
             <span>Address: {formData.address}</span>
             <span>Mobile Number: {formData.mobileNumber}</span>
           </div>
@@ -98,7 +98,7 @@ const AccountSec = () => {
             ) : (
               <div>
                 <div className="mb-4">
-                  <label className="block mb-1">Name</label>
+                  <label className="block mb-1">UserName</label>
                   <Input name="name" value={formData.name} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">

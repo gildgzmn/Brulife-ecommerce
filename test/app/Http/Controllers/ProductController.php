@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Services\CartService;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,7 @@ class ProductController extends Controller
         $productsQuery = Products::with(['category', 'inventory']);
 
         if ($categoryFilter) {
-            $productsQuery->whereHas('category', function($query) use ($categoryFilter) {
+            $productsQuery->whereHas('category', function ($query) use ($categoryFilter) {
                 $query->where('name', $categoryFilter);
             });
         }
@@ -62,7 +63,7 @@ class ProductController extends Controller
             'inventory' => $product->inventory->quantity,
         ];
 
-        return response()->json(['product' => $productData]);
+        return response()->json(['products' => $productData]);
     }
     public function addToCart(Request $request)
     {

@@ -9,6 +9,7 @@ import SalePage from './pages/SalePage';
 import AboutPage from './pages/AboutPage';
 import CartPage from './pages/CartPage';
 import CheckOutPage from './pages/CheckOutPage';
+import ThankYouPage from './pages/ThankYouPage';
 import AccountSecPage from './pages/AccountSecPage';
 import VouchersPage from './pages/VouchersPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
@@ -73,6 +74,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/thankyou" element={<ThankYouPage />} />
           <Route path="/accountsec" element={<AccountSecPage />} />
           <Route path="/vouchers" element={<VouchersPage />} />
           <Route path="/orderhistory" element={<OrderHistoryPage />} />

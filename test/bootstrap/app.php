@@ -17,12 +17,14 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
         ]);
 
         $middleware->api(append: [
             \Illuminate\Http\Middleware\HandleCors::class,
             \App\Http\Middleware\Cors::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class
+
 
         ]);
     })

@@ -2,28 +2,28 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class ProfileUpdateRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
         return [
-            'first_name' => ['string', 'max:255'],
-            'middle_initial' => ['string', 'max:255'],
-            'last_name' => ['string', 'max:255'],
-            'email' => ['string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'contact_number' => ['numeric', Rule::unique(User::class)->ignore($this->user()->id)],
-            'address' => ['string', 'max:255'],
-            'zip_code' => ['string', 'max:255'],
-            'password' => ['string', 'min:8', 'confirmed'],
+            'first_name' => 'required|string|max:255',
+            'middle_initial' => 'nullable|string|max:1',
+            'last_name' => 'required|string|max:255',
+            'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($this->user()->id)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user()->id)],
+            'contact_number' => 'nullable|string|max:15',
+            'address' => 'nullable|string|max:255',
+            'zip_code' => 'nullable|string|max:10',
+            'password' => 'nullable|string|min:8|confirmed',
         ];
     }
 }

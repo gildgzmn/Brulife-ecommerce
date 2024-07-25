@@ -24,16 +24,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Validate request
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Validation error', 'errors' => $validator->errors()], 422);
-        }
-
         try {
             $user = User::where('email', $request->input('email'))->first();
 

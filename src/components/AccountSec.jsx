@@ -7,11 +7,11 @@ const AccountSec = () => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [editType, setEditType] = useState("");
   const [formData, setFormData] = useState({
-    name: "Jessica D. Unuisi",
-    email: "jessica.unuisi@gmail.com",
+    name: "",
+    email: "",
     password: "********",
-    address: "2982 Unknownat Parking, New Brunswick, Malabu, SWZ 20001",
-    mobileNumber: "+1 (245) 455-6683",
+    address: "",
+    contactNumber: "",
     ewallet: "",  // New field
     phoneNumber: ""  // New field
   });

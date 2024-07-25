@@ -63,6 +63,8 @@ import Kids1 from './pages/proddetpage/Kids1ProdPage';
 import Kids2 from './pages/proddetpage/Kids2ProdPage';
 import App from './App';
 
+import ProductDetailsPage from './pages/proddetpage/ProductDetailsPage';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -126,6 +128,8 @@ ReactDOM.render(
         <Route path="/petcare1" element={<PetCare1 />} />
         <Route path="/kids1" element={<Kids1 />} />
         <Route path="/kids2" element={<Kids2 />} />
+
+        <Route path="/productdetails" element={<ProductDetailsPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

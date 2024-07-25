@@ -7,6 +7,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/h
 import { Separator } from "@/components/ui/separator";
 import { useNavigate } from "react-router-dom";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb";
 
 export default function TopNavigation({ modifier = "" }) {
   const navigate = useNavigate();
@@ -73,27 +74,26 @@ export default function TopNavigation({ modifier = "" }) {
       <nav className="flex flex-row justify-between items-center py-2 px-12 h-14">
         <div className="flex flex-row items-center gap-8">
           {logo}
-          {navItems.map((item, index) =>
-            item.sections.length > 0 ? (
-              <HoverDropDown
-                key={index}
-                name={item.name}
-                sections={item.sections}
-                onClick={() => {
-                  navigate(item.path);
-                  console.log("clicked");
-                }}
-              />
-            ) : (
-              <Button
-                key={index}
-                variant="ghost"
-                onClick={() => navigate(item.path)}
-              >
-                {item.name}
-              </Button>
-            )
-          )}
+          <Breadcrumb separator=">">
+            {navItems.map((item, index) => (
+              <BreadcrumbItem key={index} className="mx-4">
+                {item.sections.length > 0 ? (
+                  <HoverDropDown
+                    name={item.name}
+                    sections={item.sections}
+                    onClick={() => {
+                      navigate(item.path);
+                      console.log("clicked");
+                    }}
+                  />
+                ) : (
+                  <BreadcrumbLink href={item.path}>
+                    {item.name}
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            ))}
+          </Breadcrumb>
         </div>
         <div className="flex flex-row items-center gap-6">
           <div className="flex flex-row items-center gap-2 ">

@@ -60,6 +60,8 @@ import PetCare1 from './pages/proddetpage/PetCare1ProdPage';
 import Kids1 from './pages/proddetpage/Kids1ProdPage';
 import Kids2 from './pages/proddetpage/Kids2ProdPage';
 
+import ProductDetailsPage from './pages/proddetpage/ProductDetailsPage';
+
 export default function App() {
   return (
     <div>
@@ -124,6 +126,8 @@ export default function App() {
           <Route path="/petcare1" element={<PetCare1 />} />
           <Route path="/kids1" element={<Kids1 />} />
           <Route path="/kids2" element={<Kids2 />} />
+
+          <Route path="/productdetails" element={<ProductDetailsPage/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogFooter } from "@/components/ui/dialog";
@@ -7,14 +7,49 @@ const AccountSec = () => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [editType, setEditType] = useState("");
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
+    middleName: '',
     email: "",
-    password: "********",
+    userName: "",
+    password: "",
     address: "",
+    zipCode: "",
     contactNumber: "",
-    ewallet: "",  // New field
-    phoneNumber: ""  // New field
   });
+  const [initialFormData, setInitialFormData] = useState({});
+
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
+  const fetchUserProfile = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/profile", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("auth_token")}`,
+          "Accept": "application/json",
+        },
+      });
+      const data = await response.json();
+      const profileData = {
+        firstName: data.profileUser.first_name,
+        lastName: data.profileUser.last_name,
+        middleName: data.profileUser.middle_initial,
+        userName: data.profileUser.username,
+        email: data.profileUser.email,
+        password: data.profileUser.password,
+        address: data.profileUser.address,
+        zipCode: data.profileUser.zip_code,
+        contactNumber: data.profileUser.contact_number,
+      };
+      setFormData(profileData);
+      setInitialFormData(profileData);
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
 
   const handleEditClick = (type) => {
     setEditType(type);
@@ -29,8 +64,36 @@ const AccountSec = () => {
     }));
   };
 
-  const handleSave = () => {
-    setEditDialogOpen(false);
+  const handleSave = async () => {
+    const updatedFields = {};
+    for (let key in formData) {
+      if (formData[key] !== initialFormData[key]) {
+        updatedFields[key] = formData[key];
+      }
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/profile", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify(updatedFields),
+      });
+      const data = await response.json();
+      if (data.message === "Profile updated successfully") {
+        alert("Profile updated successfully");
+        fetchUserProfile();
+      } else {
+        alert("Error updating profile");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    } finally {
+      setEditDialogOpen(false);
+    }
   };
 
   return (
@@ -44,9 +107,9 @@ const AccountSec = () => {
             <Button onClick={() => handleEditClick("personal")}>Edit</Button>
           </div>
           <div className="flex flex-col space-y-2 mb-2">
-            <span>Name: {formData.name}</span>
-            <span>Email: {formData.email}</span>
-            <span>Password: {formData.password}</span>
+            <span>Name: {formData.firstName + " " + formData.middleName + " " + formData.lastName}</span>
+            <span>Username: {formData.userName}</span>
+            <span>Password: </span> {/* if possible change password should be via email */}
           </div>
         </div>
 
@@ -56,24 +119,30 @@ const AccountSec = () => {
             <Button onClick={() => handleEditClick("contact")}>Edit</Button>
           </div>
           <div className="flex flex-col space-y-2 mb-2">
-            <span>UserName: {formData.name}</span>
+            <span>Email: {formData.email}</span>
             <span>Address: {formData.address}</span>
-            <span>Mobile Number: {formData.mobileNumber}</span>
+            <span>Contact Number: {formData.contactNumber}</span>
           </div>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto mb-8 p-4">
-        <h2 className="text-xl font-bold mb-4">E-wallet and Phone Number</h2>
+        <h2 className="text-xl font-bold mb-4">Bank and Cards</h2>
         <div className="mb-4">
-          <label className="block mb-1">E-wallet ID</label>
-          <Input name="ewallet" placeholder="E-wallet ID" value={formData.ewallet} onChange={handleInputChange} />
+          <label className="block mb-1">Card Number</label>
+          <Input placeholder="Card Number" />
         </div>
-        <div className="mb-4">
-          <label className="block mb-1">Phone Number</label>
-          <Input name="phoneNumber" placeholder="Phone Number" value={formData.phoneNumber} onChange={handleInputChange} />
+        <div className="flex space-x-4 mb-8">
+          <div>
+            <label className="block mb-1">Expiry Date (MM/YY)</label>
+            <Input placeholder="MM/YY" />
+          </div>
+          <div>
+            <label className="block mb-1">CVV</label>
+            <Input placeholder="CVV" />
+          </div>
         </div>
-        <Button>Add E-wallet</Button>
+        <Button>Add New Card</Button>
       </div>
 
       {editDialogOpen && (
@@ -83,12 +152,20 @@ const AccountSec = () => {
             {editType === "personal" ? (
               <div>
                 <div className="mb-4">
-                  <label className="block mb-1">Name</label>
-                  <Input name="name" value={formData.name} onChange={handleInputChange} />
+                  <label className="block mb-1">First Name</label>
+                  <Input name="firstName" value={formData.firstName} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">
-                  <label className="block mb-1">Email</label>
-                  <Input name="email" value={formData.email} onChange={handleInputChange} />
+                  <label className="block mb-1">Middle Name</label>
+                  <Input name="middleName" value={formData.middleName} onChange={handleInputChange} />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-1">Last Name</label>
+                  <Input name="lastName" value={formData.lastName} onChange={handleInputChange} />
+                </div>
+                <div className="mb-4">
+                  <label className="block mb-1">Username</label>
+                  <Input name="userName" value={formData.userName} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">
                   <label className="block mb-1">Password</label>
@@ -98,16 +175,16 @@ const AccountSec = () => {
             ) : (
               <div>
                 <div className="mb-4">
-                  <label className="block mb-1">UserName</label>
-                  <Input name="name" value={formData.name} onChange={handleInputChange} />
+                  <label className="block mb-1">Email</label>
+                  <Input name="email" value={formData.email} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">
                   <label className="block mb-1">Address</label>
                   <Input name="address" value={formData.address} onChange={handleInputChange} />
                 </div>
                 <div className="mb-4">
-                  <label className="block mb-1">Mobile Number</label>
-                  <Input name="mobileNumber" value={formData.mobileNumber} onChange={handleInputChange} />
+                  <label className="block mb-1">Contact Number</label>
+                  <Input name="contactNumber" value={formData.contactNumber} onChange={handleInputChange} />
                 </div>
               </div>
             )}

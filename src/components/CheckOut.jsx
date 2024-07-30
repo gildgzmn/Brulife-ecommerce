@@ -1,62 +1,88 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button'; // Ensure the path is correct
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { selectedItems, subtotal } = location.state || { selectedItems: [], subtotal: 0 };
 
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Fetch user info from backend
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/profile', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,
+            'Accept': 'application/json',
+          }
+        });
+        const data = await response.json();
+        setUser(data.profileUser);
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
   const handlePlaceOrder = () => {
     navigate('/thankyou');
   };
 
   return (
     <div style={styles.checkoutContainer}>
-      <h1 style={styles.header}>Check Out</h1>
-      <div style={styles.checkoutContent}>
-        <div style={styles.deliveryAddress}>
-          <h2 style={styles.subHeader}>Delivery Address</h2>
-          <p style={styles.text}>Jessie D. Uresti | (+63) 915 895 6843</p>
-          <p style={styles.text}>4986 Jadewood Farms, New Brunswick</p>
+    <h1 style={styles.header}>Check Out</h1>
+    <div style={styles.checkoutContent}>
+      {user ? (
+        <div style={styles.section}>
+          <h2 style={styles.sectionHeader}>Delivery Address</h2>
+          <p>{`${user.first_name} ${user.middle_initial} ${user.last_name} (+63) ${user.contact_number}`}</p>
+          <p>{`${user.address} ${user.zip_code}`}</p>
         </div>
-        <div style={styles.shoppingCart}>
-          <h3 style={styles.subHeader}>Shopping Cart</h3>
-          <div style={styles.cartItem}>
-            <div style={styles.itemImage}>
-              <img
-                src="src/assets/Featured3.png" 
-                alt="Alcorae"
-                style={styles.image}
-              />
+      ) : (
+        <p>Loading user information...</p>
+      )}
+        <div style={styles.section}>
+          <h2 style={styles.sectionHeader}>Products Ordered</h2>
+          {selectedItems.map((item) => (
+            <div key={item.id} style={styles.cartItem}>
+              <div style={styles.itemImage}>
+                <img src={item.image} alt={item.name} style={styles.image} />
+              </div>
+              <div style={styles.itemDetails}>
+                <h4>{item.name}</h4>
+                <p>₱{item.price.toFixed(2)}</p>
+                <p>Quantity: {item.quantity}</p>
+              </div>
+              <div style={styles.itemPrice}>
+                <p>₱{(item.price * item.quantity).toFixed(2)}</p>
+              </div>
             </div>
-            <div style={styles.itemDetails}>
-              <h4 style={styles.itemTitle}>Alcorae</h4>
-              <p style={styles.text}>₱ 999.99</p>
-              <p style={styles.text}>Quantity <span>1</span></p>
-              <p style={styles.remove}>remove</p>
-            </div>
-          </div>
+          ))}
         </div>
-        <div style={styles.orderSummary}>
-          <h2 style={styles.subHeader}>Order Summary</h2>
+        <div style={styles.section}>
+          <h2 style={styles.sectionHeader}>Order Summary</h2>
           <div style={styles.summaryDetails}>
-            <p style={styles.text}>Subtotal <span>₱ 999.99</span></p>
-            <p style={styles.text}>Shipping Fee <span>₱ 999.99</span></p>
-            <p style={styles.text}>Tax <span>₱ 999.99</span></p>
-            <p style={styles.text}>Vouchers <span style={styles.voucherDropdown}>▼</span></p>
-            <p style={styles.text}>Estimated Total <span>₱ 999.99</span></p>
-          </div>
-          <div style={styles.paymentInfo}>
-            <h2 style={styles.subHeader}>Payment Information</h2>
-            <form>
-              <label style={styles.text}>
-                <input type="radio" name="payment" value="cod" /> Cash on Delivery
-              </label>
-            </form>
+            <p>Merchandise Subtotal: <span>₱{subtotal.toFixed(2)}</span></p>
+            <p>Shipping Fee: <span>₱100.00</span></p>
+            <p>Total Payment: <span>₱{(subtotal + 100).toFixed(2)}</span></p>
           </div>
         </div>
-      </div>
-      <div style={styles.placeOrderContainer}>
-        <Button style={styles.placeOrderButton} onClick={handlePlaceOrder}>Place Order</Button>
+        <div style={styles.section}>
+          <h2 style={styles.sectionHeader}>Payment Method</h2>
+          <form>
+            <label>
+              <input type="radio" name="payment" value="cod" /> Cash on Delivery
+            </label>
+          </form>
+        </div>
+        <div style={styles.placeOrderContainer}>
+          <Button style={styles.placeOrderButton} onClick={handlePlaceOrder}>Place Order</Button>
+        </div>
       </div>
     </div>
   );
@@ -66,93 +92,63 @@ const styles = {
   checkoutContainer: {
     padding: '20px',
     fontFamily: 'Arial, sans-serif',
-    textAlign: 'center'
   },
   header: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: '36px'
+    fontSize: '36px',
+    marginBottom: '20px',
   },
   checkoutContent: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginTop: '20px'
+    maxWidth: '800px',
+    margin: '0 auto',
   },
-  deliveryAddress: {
+  section: {
     background: '#f9f9f9',
     padding: '20px',
     borderRadius: '10px',
     marginBottom: '20px',
-    width: '80%'
   },
-  shoppingCart: {
-    background: '#f9f9f9',
-    padding: '20px',
-    borderRadius: '10px',
-    marginBottom: '20px',
-    width: '80%'
-  },
-  orderSummary: {
-    background: '#f9f9f9',
-    padding: '20px',
-    borderRadius: '10px',
-    width: '80%'
+  sectionHeader: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    marginBottom: '10px',
   },
   cartItem: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: '10px 0',
+    borderBottom: '1px solid #ddd',
   },
   itemImage: {
-    width: '100px',
-    height: '100px',
-    background: '#ccc',
+    width: '80px',
+    height: '80px',
     marginRight: '20px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
   },
   image: {
-    maxWidth: '100%',
-    maxHeight: '100%'
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
   itemDetails: {
-    flex: 1,
-    textAlign: 'left'
+    flex: '1',
   },
-  itemTitle: {
-    fontFamily: '\'Lilita One\', cursive',
-    fontSize: '24px'
-  },
-  text: {
-    fontSize: '18px'
-  },
-  remove: {
-    color: 'red',
-    cursor: 'pointer'
+  itemPrice: {
+    width: '100px',
+    textAlign: 'right',
   },
   summaryDetails: {
-    margin: '10px 0'
-  },
-  voucherDropdown: {
-    cursor: 'pointer'
-  },
-  paymentInfo: {
-    marginTop: '20px'
+    marginBottom: '20px',
   },
   placeOrderContainer: {
     textAlign: 'center',
-    marginTop: '20px'
   },
   placeOrderButton: {
     backgroundColor: 'black',
-    color: 'white'
+    color: 'white',
+    padding: '10px 20px',
+    fontSize: '16px',
   },
-  subHeader: {
-    fontSize: '24px',
-    fontWeight: 'bold'
-  }
 };
 
 export default Checkout;

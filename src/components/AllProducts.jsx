@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const AllProducts = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/products', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(text => {
+                setProducts(text.products);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error("There was an error fetching the products!", error);
+                setError(error);
+                setLoading(false);
+            });
+    }, []);
+
     return (
         <div style={styles.allProductsContainer}>
             <div style={styles.filters}>
@@ -19,10 +44,17 @@ const AllProducts = () => {
             <div style={styles.products}>
                 <h1 style={styles.productHeader}>All Products</h1>
                 <div style={styles.productGrid}>
-                    {Array.from({ length: 12 }).map((_, index) => (
-                        <div key={index} style={styles.productCard}>
-                            <img src={`path_to_your_image${index}.jpg`} alt={`Product ${index}`} style={styles.productImage} />
-                        </div>
+                    {products.map(product => (
+                        <Link key={product.id} to={`/products/${product.id}`} style={styles.productCardLink}>
+                            <div style={styles.productCard}>
+                                <div style={styles.imageContainer}>
+                                    <img src={product.image} alt={product.name} style={styles.productImage} />
+                                </div>
+                                <h3 style={styles.productName}>{product.name.toUpperCase()}</h3>
+                                <p style={styles.productPrice}>₱{product.price}</p>
+                                <p style={styles.productInventory}>Stocks: {product.inventory}</p>
+                            </div>
+                        </Link>
                     ))}
                 </div>
                 <Button className="load-more" style={styles.loadMore}>See More</Button>
@@ -82,16 +114,48 @@ const styles = {
     },
     productCard: {
         width: '100%',
-        background: '#e0e0e0',
+        height: '320px',
+        background: '#fff',
         borderRadius: '8px',
+        border: '2px solid #ddd',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
         overflow: 'hidden',
         position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '10px',
+    },
+    imageContainer: {
+        width: '100%',
+        height: '180px',
+        overflow: 'hidden',
+        borderRadius: '8px',
+        marginBottom: '10px',
     },
     productImage: {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+    },
+    productName: {
+        fontWeight: 'bold',
+        fontSize: '18px',
+        margin: '5px 0',
+        textAlign: 'center',
+    },
+    productPrice: {
+        fontSize: '14px',
+        fontWeight: 'normal',
+        color: '#e74c3c',
+        margin: '2px 0', 
+        textAlign: 'center',
+    },
+    productInventory: {
+        fontSize: '14px',
+        color: '#555',
+        margin: '2px 0', 
+        textAlign: 'center',
     },
     loadMore: {
         display: 'block',

@@ -1,15 +1,47 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using react-router-dom
+import { Link, useNavigate } from 'react-router-dom';
 import image from '../assets/LoginBackground.png';
 
 const Login = ({ canResetPassword, route }) => {
   const [data, setData] = useState({ email: '', password: '', remember: false });
   const [errors, setErrors] = useState({});
   const [processing, setProcessing] = useState(false);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
+    setProcessing(true);
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/newlogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const responseData = await response.json();
+      setProcessing(false);
+
+      if (response.ok) {
+        if (responseData.token) {
+          setMessage('Login successful.');
+          localStorage.setItem('auth_token', responseData.token);
+          localStorage.setItem('user_id', responseData.id);
+          navigate('/accountsec');
+        } else {
+          setMessage(responseData.message || 'Login failed.');
+        }
+      } else {
+        setMessage(responseData.message || 'Login failed.');
+      }
+    } catch (error) {
+      setProcessing(false);
+      setMessage('An error occurred. Please try again later.');
+    }
   };
 
   const handleInputChange = (key, value) => {
@@ -24,7 +56,7 @@ const Login = ({ canResetPassword, route }) => {
       className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${image})` }}
     >
-      <div className="bg-white p-10 rounded shadow-md w-full max-w-lg mt-12 mb-12"> {/* Changed background to white */}
+      <div className="bg-white p-10 rounded shadow-md w-full max-w-lg mt-12 mb-12">
         <h1 className="text-3xl font-bold mb-8 text-center" style={{ fontSize: '4.05rem' }}>Log in</h1>
         <p className="mb-6 text-center">Enter your email address and password to login</p>
         
@@ -36,7 +68,7 @@ const Login = ({ canResetPassword, route }) => {
               type="email"
               name="email"
               value={data.email}
-              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700" // Gray background and text color
+              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700"
               autoComplete="username"
               isFocused={true}
               onChange={(e) => handleInputChange('email', e.target.value)}
@@ -51,7 +83,7 @@ const Login = ({ canResetPassword, route }) => {
               type="password"
               name="password"
               value={data.password}
-              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700" // Gray background and text color
+              className="mt-1 block w-full bg-gray-100 border border-gray-300 text-gray-700"
               autoComplete="current-password"
               onChange={(e) => handleInputChange('password', e.target.value)}
             />
@@ -85,6 +117,12 @@ const Login = ({ canResetPassword, route }) => {
           </div>
         </form>
 
+        {message && (
+          <div className="text-center mt-4 text-sm text-red-600">
+            {message}
+          </div>
+        )}
+
         <div className="flex items-center justify-center my-6">
           <span className="w-[30%] border-b"></span>
           <span className="px-3 py-2 text-gray-500">or continue with</span>
@@ -110,7 +148,7 @@ const Login = ({ canResetPassword, route }) => {
 
 export default Login;
 
-// Placeholder components for InputLabel, TextInput, InputError, Checkbox, and PrimaryButton
+// Placeholder components
 const InputLabel = ({ htmlFor, value }) => (
   <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700">
     {value}
